@@ -1,0 +1,13 @@
+goon_the_racoon: Well hello there, officer.
+goon_the_racoon: How may I be of assistance today?
+- I am looking for a stolen basket that belongs to Eddie the Hedgehog. Do you know anything about that?
+- I know you did it!
+	goon_the_racoon: Hey, buddy, relax I don't know what you're talking about.
+	goon_the_racoon: And sure, my face looks like I got a thief's mask on.
+	goon_the_racoon: But that DON'T MEAN I'M A THIEF!
+	goon_the_racoon: You should really think about what you say before you say it, pal.
+	- Who mentioned anything about stealing?
+		goon_the_racoon: I...
+		goon_the_racoon: I'm pretty sure...
+		goon_the_racoon: I don't know what you're talking about...
+		narrator: Impressive interrogation tactics...

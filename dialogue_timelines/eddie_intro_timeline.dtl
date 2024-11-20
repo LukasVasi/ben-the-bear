@@ -1,8 +1,35 @@
-eddie_the_hedgehog: BEN!
-eddie_the_hedgehog: BRO I NEED YOUR HELP
-eddie_the_hedgehog: I'VE BEEN ROBBED, BRO
-eddie_the_hedgehog: FR
-eddie_the_hedgehog: ON GOD
-eddie_the_hedgehog: NO CAP
-- Dude, relax, I'll handle it
-	eddie_the_hedgehog: YES, THAT'S WHAT I'M TALKING ABOUT, I KNEW I COULD TRUST YOU BRO!
+eddie_the_hedgehog: Ben!
+eddie_the_hedgehog: I need your help!
+eddie_the_hedgehog: I think I've been robbed!
+eddie_the_hedgehog: My little mushroom basket is missing. I've checked everywhere but I can't find it...
+eddie_the_hedgehog: I went to your colleagues at the precinct, but they just scoffed..
+eddie_the_hedgehog: They told me that I probably just lost it and that a little basket isn't worth devoting police resources...
+eddie_the_hedgehog: But that basket is a gift from my mom, she'll be so upset if she finds out that I lost it.
+eddie_the_hedgehog: So I was hoping that you could help me... Not as  a police officer, but as a friend...
+- Sure, man, I'll help
+	label the quest accepted
+	eddie_the_hedgehog: YES! THAT'S WHAT'S UP! I KNEW I COULD TRUST YOU!
+- Sorry, man, can't do.
+	narrator: Wait a second.
+	narrator: You do realise, this game is kind of about helping your friend out, right?
+	narrator: You don't accept the call to adventure, there kind of can't be an adventure...
+	narrator: Are you absolutely sure?
+	- Ok, ok, I help him out... I guess...
+		label the change of heart (Change of heart)
+		narrator: That's the spirit! Carry on.
+		- Sure, man, I'll help
+			jump the quest accepted
+	- Yup. Don't care.
+		narrator: But your friend is so cute and friendly, are you absolutely sure?
+		- Ugh, fine, whatever
+			jump the change of heart
+		- Still don't care.
+			narrator: But throughout your adventure, you might meet other interesting characters, explore different sceneries, have fun...
+			- Ok, but I'm not doing this for you.
+				jump the change of heart
+			- I DON'T CARE!
+				narrator: FINE!
+				narrator: HAVE IT YOUR WAY!
+				narrator: Ugh...
+				narrator: I guess we're done here then...
+				[signal arg="quit_game"]

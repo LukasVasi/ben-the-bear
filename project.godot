@@ -22,13 +22,17 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"ben_the_bear": "res://dialogue_characters/ben_the_bear.dch",
 "eddie_the_hedgehog": "res://dialogue_characters/eddie_the_hedgehog.dch",
+"goon_the_racoon": "res://dialogue_characters/goon_the_racoon.dch",
 "narrator": "res://dialogue_characters/narrator.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
 "eddie_intro_timeline": "res://dialogue_timelines/eddie_intro_timeline.dtl",
-"intro_timeline": "res://dialogue_timelines/intro_timeline.dtl"
+"goon_timeline": "res://dialogue_timelines/goon_timeline.dtl",
+"intro_timeline": "res://dialogue_timelines/intro_timeline.dtl",
+"tutorial_timeline": "res://dialogue_timelines/tutorial_timeline.dtl"
 }
 
 [display]

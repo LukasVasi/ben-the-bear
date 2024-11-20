@@ -2,7 +2,7 @@
 "@path": "res://addons/dialogic/Resources/character.gd",
 "@subpath": NodePath(""),
 "_translation_id": "",
-"color": Color(1, 1, 1, 1),
+"color": Color(0, 0.656128, 0.976563, 1),
 "custom_info": {
 "sound_mood_default": "",
 "sound_moods": {},
@@ -10,7 +10,7 @@
 },
 "default_portrait": "",
 "description": "",
-"display_name": "The Narrator",
+"display_name": "Ben The Bear",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
