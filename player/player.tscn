@@ -1,12 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwi8alibbja0m"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5c0ni"]
+[ext_resource type="Texture2D" uid="uid://01dot8r7c2l1" path="res://assets/custom/BenTheBear.png" id="2_58j0a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgsvi"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t643m"]
-width = 16
-height = 24
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_5c0ni")
@@ -15,7 +12,7 @@ script = ExtResource("1_5c0ni")
 shape = SubResource("CircleShape2D_lgsvi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -7)
-texture = SubResource("NoiseTexture2D_t643m")
+position = Vector2(0, -20)
+texture = ExtResource("2_58j0a")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
