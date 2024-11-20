@@ -1,9 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwi8alibbja0m"]
+[gd_scene load_steps=10 format=3 uid="uid://cwi8alibbja0m"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5c0ni"]
 [ext_resource type="Texture2D" uid="uid://01dot8r7c2l1" path="res://assets/custom/BenTheBear.png" id="2_58j0a"]
+[ext_resource type="Texture2D" uid="uid://c4hr5j43kfk83" path="res://assets/kenney_cursor_pixel_pack/Tiles/tile_0006.png" id="3_j10kq"]
+[ext_resource type="Material" uid="uid://tihwlgxgq06p" path="res://materials/interactable_object_shader_material.tres" id="3_ncpd0"]
+[ext_resource type="Script" path="res://player/search_cursor.gd" id="4_bx0wj"]
+[ext_resource type="AudioStream" uid="uid://diyai0fok5n5c" path="res://assets/sounds/achievement.wav" id="6_g4k5d"]
+[ext_resource type="Texture2D" uid="uid://bdp17anwkt5hg" path="res://assets/kenney_cursor_pixel_pack/Tiles/tile_0180.png" id="7_3putm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgsvi"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ptmp"]
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 0)
+spread = 180.0
+initial_velocity_min = 90.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.6
+scale_max = 0.8
+color = Color(1, 0.875112, 0.695295, 1)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_5c0ni")
@@ -16,3 +32,24 @@ position = Vector2(0, -20)
 texture = ExtResource("2_58j0a")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="SearchCursor" type="Sprite2D" parent="."]
+z_index = 36
+z_as_relative = false
+material = ExtResource("3_ncpd0")
+texture = ExtResource("3_j10kq")
+script = ExtResource("4_bx0wj")
+shake_multiplier = 3.0
+width_multiplier = 2.0
+
+[node name="FindAudioPlayer" type="AudioStreamPlayer" parent="SearchCursor"]
+stream = ExtResource("6_g4k5d")
+pitch_scale = 1.25
+
+[node name="FindParticles" type="GPUParticles2D" parent="SearchCursor"]
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_1ptmp")
+texture = ExtResource("7_3putm")
+lifetime = 0.2
+one_shot = true

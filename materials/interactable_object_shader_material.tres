@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://tihwlgxgq06p"]
+
+[ext_resource type="Shader" path="res://materials/outline_shader.gdshader" id="1_e6smf"]
+
+[resource]
+shader = ExtResource("1_e6smf")
+shader_parameter/enabled = false
+shader_parameter/color = Color(0.8246, 0.583883, 0, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 1
