@@ -4,13 +4,6 @@ extends Area2D
 
 ## An object that can be found in the scene and picked up
 
-enum State {
-	Disabled, # cannot be found or picked up yet
-	Hidden, # can be found
-	Found, # object has been found in the scene
-	PickedUp, # object has been found and picked up
-}
-
 ## Find distance specifies how close the pointer has to be to the obejct to find it.
 @export var find_distance : float = 10
 
@@ -19,31 +12,56 @@ enum State {
 
 @onready var _sprite : Sprite2D = get_node("Sprite2D")
 
-var _state : State = State.Hidden
+@export var state : ObjectState
 
+var _parent_scene : SceneBase
 
 func _ready() -> void:
 	_sprite.texture = texture # gotta ensure this is set once sprite is initialised
 	_sprite.material = _sprite.material.duplicate() # ensure that the material is unique
 
 
+## Called by the parent scene base when loading in.
+func load_object(parent: SceneBase, saved_state: ObjectState) -> void:
+	_parent_scene = parent
+	if is_instance_valid(saved_state):
+		state = saved_state # override the default state if provided
+		
+
+
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_action_pressed("interact") and _state == State.Found:
-		print("Successfully interacted with object")
+	if event.is_action_pressed("interact") and state.visibility_state == ObjectState.VisibilityState.Found:
+		interact()
+
+
+func interact() -> void:
+	state.visibility_state = ObjectState.VisibilityState.PickedUp
+	_parent_scene.update_object_state(name, state)
+	_update_visual()
+	print("Successfully picked up " + name)
 
 
 func find() -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	if _state == State.Hidden:
+	if state.visibility_state == ObjectState.VisibilityState.Hidden:
 		print("Object ", self, " has been found")
-		_state = State.Found
-		_sprite.material.set_shader_parameter("enabled", true) # enable the highlight
+		state.visibility_state = ObjectState.VisibilityState.Found
+		_update_visual()
+		_parent_scene.update_object_state(name, state)
 
 
 func is_hidden() -> bool:
-	return _state == State.Hidden
+	return state.visibility_state == ObjectState.VisibilityState.Hidden
+
+
+func _update_visual() -> void:
+	match state.visibility_state:
+		ObjectState.VisibilityState.Found:
+			_sprite.material.set_shader_parameter("enabled", true) # enable the highlight
+		_:
+			_sprite.material.set_shader_parameter("enabled", false) # disable the highlight
 
 
 func set_texture(new_texture : Texture2D) -> void:

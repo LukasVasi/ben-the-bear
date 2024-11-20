@@ -1,4 +1,5 @@
-extends Node2D
+class_name HomeScene
+extends SceneBase
 
 func _ready() -> void:
 	Dialogic.signal_event.connect(_on_dialogic_signal_event)

@@ -1,7 +1,15 @@
 class_name MainMenu
-extends Control
+extends SceneBase
 
 @onready var _staging: Staging = get_tree().get_first_node_in_group("staging")
+
+
+func load_scene_state() -> void:
+	return # override to do nothing
+
+
+func save_scene_state() -> void:
+	return # override to do nothing
 
 
 func _on_play_button_pressed() -> void:

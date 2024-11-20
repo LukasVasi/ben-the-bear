@@ -29,7 +29,7 @@ script = ExtResource("1_aesxu")
 scene = ExtResource("4_b6grt")
 overrides = {
 "box_distance": "8.0",
-"box_size": "Vector2(580, 120)"
+"box_size": "Vector2(580, 124)"
 }
 
 [sub_resource type="Resource" id="Resource_vjbd6"]

@@ -1,17 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://t66hwg54uwhv"]
+[gd_scene load_steps=6 format=3 uid="uid://t66hwg54uwhv"]
 
 [ext_resource type="Script" path="res://common/objects/interactable_object.gd" id="1_f85xy"]
-[ext_resource type="Material" uid="uid://tihwlgxgq06p" path="res://materials/interactable_object_shader_material.tres" id="2_1fg8p"]
+[ext_resource type="Shader" path="res://materials/outline_shader.gdshader" id="3_m544f"]
 [ext_resource type="Texture2D" uid="uid://bdp17anwkt5hg" path="res://assets/kenney_cursor_pixel_pack/Tiles/tile_0180.png" id="3_y2uam"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5g04o"]
+shader = ExtResource("3_m544f")
+shader_parameter/enabled = false
+shader_parameter/color = Color(0.8246, 0.583883, 0, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvho2"]
 
 [node name="InteractableObject" type="Area2D" groups=["interactable_object"]]
 position = Vector2(370, 225)
 script = ExtResource("1_f85xy")
+texture = ExtResource("3_y2uam")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("2_1fg8p")
+material = SubResource("ShaderMaterial_5g04o")
 texture = ExtResource("3_y2uam")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

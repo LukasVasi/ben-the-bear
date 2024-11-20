@@ -6,7 +6,7 @@ extends Node
 @onready var _scene_container : Node = get_node("SceneContainer")
 @onready var _fade : ColorRect = get_node("Fade")
 
-var _current_scene : Node
+var _current_scene : SceneBase
 var _tween : Tween
 
 func _ready() -> void:
@@ -21,7 +21,10 @@ func load_scene(scene_path: String) -> void:
 		_tween = get_tree().create_tween()
 		_tween.tween_method(_set_fade, 0.0, 1.0, 1.0)
 		await _tween.finished
-
+		
+		# Save the scene state
+		_current_scene.save_scene_state()
+		
 		# Remove old scene
 		_scene_container.remove_child(_current_scene)
 		_current_scene.queue_free()
@@ -33,6 +36,9 @@ func load_scene(scene_path: String) -> void:
 	# Setup the new scene
 	_current_scene = new_scene.instantiate()
 	_scene_container.add_child(_current_scene)
+	
+	# Load the scene state
+	_current_scene.load_scene_state()
 	
 	# Fade to visible
 	if _tween:
