@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://cha5jd3cvxfsy"]
+[gd_scene load_steps=2 format=3 uid="uid://cha5jd3cvxfsy"]
+
+[ext_resource type="Script" path="res://locations/home/home.gd" id="1_di55a"]
 
 [node name="Home" type="Node2D"]
+script = ExtResource("1_di55a")
 
 [node name="Floor" type="Polygon2D" parent="."]
 position = Vector2(63, 231)
