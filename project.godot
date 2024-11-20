@@ -34,6 +34,8 @@ directories/dtl_directory={
 "intro_timeline": "res://dialogue_timelines/intro_timeline.dtl",
 "tutorial_timeline": "res://dialogue_timelines/tutorial_timeline.dtl"
 }
+layout/style_list=["res://dialogic_style.tres"]
+layout/default_style="res://dialogic_style.tres"
 
 [display]
 
