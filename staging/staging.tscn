@@ -5,7 +5,7 @@
 [node name="Staging" type="Node" groups=["staging"]]
 process_mode = 3
 script = ExtResource("1_w0lf3")
-main_menu_path = "res://main_menu/main_menu.tscn"
+main_menu_path = "res://ui/main_menu.tscn"
 
 [node name="SceneContainer" type="Node" parent="."]
 process_mode = 1

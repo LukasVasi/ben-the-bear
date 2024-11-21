@@ -4,6 +4,8 @@ extends Area2D
 
 ## An object that can be found in the scene and picked up
 
+signal visibility_state_changed(state : ObjectState.VisibilityState)
+
 ## Find distance specifies how close the pointer has to be to the obejct to find it.
 @export var find_distance : float = 10
 
@@ -36,6 +38,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 func interact() -> void:
 	state.visibility_state = ObjectState.VisibilityState.PickedUp
+	visibility_state_changed.emit(state.visibility_state)
 	_parent_scene.update_object_state(name, state)
 	_update_visual()
 	print("Successfully picked up " + name)
@@ -48,6 +51,7 @@ func find() -> void:
 	if state.visibility_state == ObjectState.VisibilityState.Hidden:
 		print("Object ", self, " has been found")
 		state.visibility_state = ObjectState.VisibilityState.Found
+		visibility_state_changed.emit(state.visibility_state)
 		_update_visual()
 		_parent_scene.update_object_state(name, state)
 

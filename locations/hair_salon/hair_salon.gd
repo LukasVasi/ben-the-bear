@@ -1,0 +1,2 @@
+class_name HairSalonScene
+extends SceneBase

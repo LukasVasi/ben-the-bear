@@ -16,6 +16,10 @@ func save_scene_state() -> void:
 	SaveManager.save_scene_state(scene_name, scene_state)
 
 
+func cleanup() -> void:
+	pass
+
+
 func _load_object_states() -> void:
 	# Override the default states
 	for object : InteractableObject in get_tree().get_nodes_in_group("interactable_object"):

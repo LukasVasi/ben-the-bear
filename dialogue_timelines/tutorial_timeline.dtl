@@ -5,15 +5,22 @@ narrator: Just remember\: if you forget something, you can always find the tutor
 narrator: So what will it be?
 - I could learn a thing or two (continue with tutorial)
 	narrator: Splendid!
+	[signal arg="tutorial_accepted"]
 	jump the movement
 - I'm ready to dive right in (skip the tutorial)
 	[end_timeline]
 label the movement (Movement tutorial)
-narrator: You can move around different areas by clicking the LEFT MOUSE button where you want to go. Go ahead, try it out!
+narrator: You can move around by clicking the LEFT MOUSE button where you want to go. Go ahead, try it out!
+[end_timeline]
 label the searching (Searching tutorial)
 narrator: Many of the areas that you will visit, have a few hidden items laying around.
 narrator: You can find these items by clicking the E button on your keyboard.
 narrator: This will enable the search mode. Here you can search the scene with your mouse cursor. The closer you are to a hidden item, the harder will the cursor shake and when you get close enough, the item will be revealed. It's like a game of hot and cold.
-narrator: Once an item is revealed, you can click the E button to exit the search mode and then interact with the object using the LEFT MOUSE button. 
+narrator: Once an item is revealed, you can click the E button to exit the search mode and then interact with the object using the LEFT MOUSE button.
 narrator: Try finding your map in your home.
+[end_timeline]
 label the map (Interaction tutorial)
+narrator: The map allows you to navigate between different areas.
+narrator: You can access the map by pressing the M button.
+narrator: In the map, you can click on the location you want to travel to.
+[end_timeline]

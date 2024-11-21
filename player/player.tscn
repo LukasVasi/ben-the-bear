@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwi8alibbja0m"]
+[gd_scene load_steps=11 format=3 uid="uid://cwi8alibbja0m"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5c0ni"]
 [ext_resource type="Texture2D" uid="uid://01dot8r7c2l1" path="res://assets/custom/BenTheBear.png" id="2_58j0a"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://player/search_cursor.gd" id="4_bx0wj"]
 [ext_resource type="AudioStream" uid="uid://diyai0fok5n5c" path="res://assets/sounds/achievement.wav" id="6_g4k5d"]
 [ext_resource type="Texture2D" uid="uid://bdp17anwkt5hg" path="res://assets/kenney_cursor_pixel_pack/Tiles/tile_0180.png" id="7_3putm"]
+[ext_resource type="PackedScene" uid="uid://dy35p4ooig37s" path="res://ui/map.tscn" id="8_uw4rf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgsvi"]
 
@@ -23,6 +24,7 @@ color = Color(1, 0.875112, 0.695295, 1)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_5c0ni")
+movement_speed = 80.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lgsvi")
@@ -53,3 +55,6 @@ process_material = SubResource("ParticleProcessMaterial_1ptmp")
 texture = ExtResource("7_3putm")
 lifetime = 0.2
 one_shot = true
+
+[node name="Map" parent="." instance=ExtResource("8_uw4rf")]
+visible = false

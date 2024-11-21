@@ -8,6 +8,8 @@ extends CharacterBody2D
 
 @onready var _search_cursor : SearchCursor =get_node("SearchCursor")
 
+@onready var _map : Map = get_node("Map")
+
 var _pointer_state : PointerState = PointerState.Default
 
 enum PointerState {
@@ -22,6 +24,12 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released("interact") or Input.is_action_just_pressed("cancel"):
 		if _pointer_state == PointerState.Search:
 			_toggle_search()
+	
+	if Input.is_action_just_pressed("open_map"):
+		if _pointer_state == PointerState.Search:
+			_toggle_search()
+		
+		_map.visible = not _map.visible
 
 
 func _toggle_search() -> void:

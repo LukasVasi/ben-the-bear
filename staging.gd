@@ -7,6 +7,7 @@ extends Node
 @onready var _fade : ColorRect = get_node("Fade")
 
 var _current_scene : SceneBase
+var _current_scene_path : String
 var _tween : Tween
 
 func _ready() -> void:
@@ -16,6 +17,9 @@ func _ready() -> void:
 	load_scene(main_menu_path)
 
 func load_scene(scene_path: String) -> void:
+	if _current_scene_path == scene_path:
+		return # exit early if already in the scene
+	
 	# Pause the game
 	get_tree().paused = true
 	
@@ -32,6 +36,7 @@ func load_scene(scene_path: String) -> void:
 		_current_scene.save_scene_state()
 		
 		# Remove old scene
+		_current_scene.cleanup()
 		_scene_container.remove_child(_current_scene)
 		_current_scene.queue_free()
 		_current_scene = null
@@ -40,6 +45,7 @@ func load_scene(scene_path: String) -> void:
 	var new_scene : PackedScene = load(scene_path)
 	
 	# Setup the new scene
+	_current_scene_path = scene_path
 	_current_scene = new_scene.instantiate()
 	_scene_container.add_child(_current_scene)
 	
