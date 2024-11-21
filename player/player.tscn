@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwi8alibbja0m"]
+[gd_scene load_steps=16 format=3 uid="uid://cwi8alibbja0m"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5c0ni"]
 [ext_resource type="Texture2D" uid="uid://01dot8r7c2l1" path="res://assets/custom/BenTheBear.png" id="2_58j0a"]
@@ -11,6 +11,8 @@
 [ext_resource type="Theme" uid="uid://c043uyufavnx4" path="res://assets/ui_theme.tres" id="9_81ovj"]
 [ext_resource type="Script" path="res://ui/volume_slider.gd" id="10_2fuh6"]
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="10_46x7l"]
+[ext_resource type="Texture2D" uid="uid://bqg7exnxilosu" path="res://assets/custom/coins.png" id="12_c74km"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="12_of1hx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgsvi"]
 
@@ -193,6 +195,51 @@ text = "Save"
 layout_mode = 2
 theme = ExtResource("9_81ovj")
 text = "Cancel"
+
+[node name="UI" type="Control" parent="."]
+top_level = true
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("9_81ovj")
+script = ExtResource("12_of1hx")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -25.0
+offset_right = 4.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VSplitContainer" type="VSplitContainer" parent="UI/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/PanelContainer/HBoxContainer/VSplitContainer"]
+layout_mode = 2
+texture = ExtResource("12_c74km")
+
+[node name="MoneyLabel" type="Label" parent="UI/PanelContainer/HBoxContainer/VSplitContainer"]
+layout_mode = 2
 
 [connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="PauseMenu" method="_on_settings_button_pressed"]

@@ -32,11 +32,15 @@ func load_object(parent: SceneBase, saved_state: ObjectState) -> void:
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_action_pressed("interact") and state.visibility_state == ObjectState.VisibilityState.Found:
-		interact()
+	if event.is_action_pressed("interact"):
+		match state.visibility_state:
+			ObjectState.VisibilityState.Found:
+				pick_up()
+			ObjectState.VisibilityState.Hidden:
+				find()
 
 
-func interact() -> void:
+func pick_up() -> void:
 	state.visibility_state = ObjectState.VisibilityState.PickedUp
 	visibility_state_changed.emit(state.visibility_state)
 	_parent_scene.update_object_state(name, state)
@@ -63,8 +67,13 @@ func is_hidden() -> bool:
 func _update_visual() -> void:
 	match state.visibility_state:
 		ObjectState.VisibilityState.Found:
+			visible = true
 			_sprite.material.set_shader_parameter("enabled", true) # enable the highlight
+		ObjectState.VisibilityState.PickedUp:
+			visible = false
+			_sprite.material.set_shader_parameter("enabled", false) # disable the highlight
 		_:
+			visible = true
 			_sprite.material.set_shader_parameter("enabled", false) # disable the highlight
 
 

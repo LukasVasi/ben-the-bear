@@ -16,10 +16,11 @@ func _ready() -> void:
 	get_tree().set_auto_accept_quit(false)
 	_set_fade(1.0)
 	load_scene(main_menu_path)
+	_music_player.play()
 
 func load_scene(scene_path: String) -> void:
-	if _current_scene_path == scene_path:
-		return # exit early if already in the scene
+	if _current_scene_path == scene_path or scene_path == null:
+		return # exit early
 	
 	# Pause the game
 	get_tree().paused = true
@@ -53,6 +54,9 @@ func load_scene(scene_path: String) -> void:
 	# Load the scene state
 	_current_scene.load_scene_state()
 	
+	if scene_path != main_menu_path:
+		PlayerManager.set_last_scene(scene_path)
+	
 	# Fade to visible
 	if _tween:
 		_tween.kill()
@@ -75,6 +79,8 @@ func handle_quit() -> void:
 		
 		# Save the scene state
 		_current_scene.save_scene_state()
+	
+	PlayerManager.save_state()
 	
 	get_tree().quit()
 

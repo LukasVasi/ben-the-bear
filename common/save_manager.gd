@@ -3,6 +3,20 @@ extends Node
 const SAVE_FILE_START = "user://"
 const OBJECT_SAVE_FILE_END = "_objects.save"
 const DIALOGUE_SAVE_FILE_END = "_dialogue.save"
+const PLAYER_STATE_FILE = "user://player_state.tres"
+
+
+func load_player_state() -> PlayerState:
+	if ResourceLoader.exists(PLAYER_STATE_FILE):
+		return load(PLAYER_STATE_FILE)
+	else:
+		return null
+
+
+func save_player_state(state : PlayerState) -> void:
+	var error : Error = ResourceSaver.save(state, PLAYER_STATE_FILE)
+	if error:
+		push_error("Error while saving player state: ", error)
 
 
 func save_scene_object_state(scene_name : String, scene_object_state : Dictionary) -> void:
