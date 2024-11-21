@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwi8alibbja0m"]
+[gd_scene load_steps=19 format=3 uid="uid://cwi8alibbja0m"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5c0ni"]
 [ext_resource type="Texture2D" uid="uid://01dot8r7c2l1" path="res://assets/custom/BenTheBear.png" id="2_58j0a"]
@@ -13,6 +13,9 @@
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="10_46x7l"]
 [ext_resource type="Texture2D" uid="uid://bqg7exnxilosu" path="res://assets/custom/coins.png" id="12_c74km"]
 [ext_resource type="Script" path="res://ui/hud.gd" id="12_of1hx"]
+[ext_resource type="Script" path="res://ui/inventory.gd" id="14_4avu3"]
+[ext_resource type="Texture2D" uid="uid://cri1buqys8dop" path="res://assets/custom/inventory.png" id="15_uvh8w"]
+[ext_resource type="PackedScene" uid="uid://bvtnv0b52l80q" path="res://ui/item_slot.tscn" id="16_5e2ps"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgsvi"]
 
@@ -239,6 +242,80 @@ layout_mode = 2
 texture = ExtResource("12_c74km")
 
 [node name="MoneyLabel" type="Label" parent="UI/PanelContainer/HBoxContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="Inventory" type="Control" parent="."]
+top_level = true
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_81ovj")
+script = ExtResource("14_4avu3")
+
+[node name="ColorRect" type="ColorRect" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.153472, 0.235432, 0.11697, 0.470588)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Inventory"]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_uvh8w")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -20.0
+offset_right = 31.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="ItemSlot" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
+layout_mode = 2
+
+[node name="ItemSlot5" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
+layout_mode = 2
+
+[node name="ItemSlot6" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
 layout_mode = 2
 
 [connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]

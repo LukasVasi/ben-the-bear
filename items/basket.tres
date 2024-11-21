@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dtlq5v55txgg8"]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_g5i4o"]
+[ext_resource type="Texture2D" uid="uid://f4q4jcuefhlb" path="res://assets/custom/map_item.png" id="2_2naxx"]
+
+[resource]
+script = ExtResource("1_g5i4o")
+name = "Basket"
+timeline = "basket_timeline"
+texture = ExtResource("2_2naxx")

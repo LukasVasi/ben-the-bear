@@ -16,6 +16,8 @@ signal visibility_state_changed(state : ObjectState.VisibilityState)
 
 @export var state : ObjectState
 
+@export var item : Item
+
 var _parent_scene : SceneBase
 
 func _ready() -> void:
@@ -45,6 +47,7 @@ func pick_up() -> void:
 	visibility_state_changed.emit(state.visibility_state)
 	_parent_scene.update_object_state(name, state)
 	_update_visual()
+	PlayerManager.add_item(item)
 	print("Successfully picked up " + name)
 
 

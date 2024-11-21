@@ -1,0 +1,10 @@
+narrator: This is a cargo manifest for today's deliveries to the bakery.
+- Understood
+	[end_timeline]
+- What does it list?
+	narrator: Sauerkrauts, carrots, cabbages, mushrooms, poppy seeds.
+	if {Progression.FoundBuns} == true:
+		narrator: Wait a minute...
+		narrator: How can you make buns with mushrooms, if you don't have mushrooms?
+		set {Progression.SmokingGun} = true
+	[end_timeline]

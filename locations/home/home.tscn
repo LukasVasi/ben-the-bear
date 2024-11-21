@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cha5jd3cvxfsy"]
+[gd_scene load_steps=20 format=4 uid="uid://cha5jd3cvxfsy"]
 
 [ext_resource type="Script" path="res://locations/home/home.gd" id="1_di55a"]
 [ext_resource type="PackedScene" uid="uid://cwi8alibbja0m" path="res://player/player.tscn" id="2_1vldp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cnqje463vsta7" path="res://assets/custom/map_object.png" id="7_8b8yy"]
 [ext_resource type="Script" path="res://common/objects/object_state.gd" id="7_t0xiu"]
 [ext_resource type="PackedScene" uid="uid://c3dlf53wxll3i" path="res://characters/eddie_the_hedgehog.tscn" id="7_x8775"]
+[ext_resource type="Resource" uid="uid://bftlh6f2dx88l" path="res://items/map.tres" id="8_y4vjt"]
 [ext_resource type="Script" path="res://common/objects/coins.gd" id="9_a2a0n"]
 [ext_resource type="Shader" path="res://materials/outline_shader.gdshader" id="10_8ks1q"]
 [ext_resource type="Texture2D" uid="uid://bqg7exnxilosu" path="res://assets/custom/coins.png" id="11_sk220"]
@@ -29,7 +30,7 @@ size = Vector2(20, 20)
 script = ExtResource("7_t0xiu")
 visibility_state = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vgesm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtjtc"]
 shader = ExtResource("10_8ks1q")
 shader_parameter/enabled = false
 shader_parameter/color = Color(0.8246, 0.583883, 0, 1)
@@ -62,6 +63,7 @@ state = SubResource("Resource_f8i5m")
 position = Vector2(313, 157)
 texture = ExtResource("7_8b8yy")
 state = SubResource("Resource_u62c4")
+item = ExtResource("8_y4vjt")
 
 [node name="MovementArea" type="Area2D" parent="."]
 visible = false
@@ -85,7 +87,7 @@ texture = ExtResource("11_sk220")
 state = SubResource("Resource_33pwq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Coins"]
-material = SubResource("ShaderMaterial_vgesm")
+material = SubResource("ShaderMaterial_qtjtc")
 texture = ExtResource("11_sk220")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coins"]

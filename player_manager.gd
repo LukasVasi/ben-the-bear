@@ -36,7 +36,7 @@ func get_music_setting() -> float:
 
 
 func add_item(item : Resource) -> void:
-	player_state.inventory[item.name] = item
+	player_state.inventory.append(item)
 
 
 func add_money(value : int) -> void:
@@ -45,6 +45,10 @@ func add_money(value : int) -> void:
 
 func get_money() -> int:
 	return player_state.money
+
+
+func get_inventory() -> Array[Item]:
+	return player_state.inventory
 
 
 func save_state() -> void:

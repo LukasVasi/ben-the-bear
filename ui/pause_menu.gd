@@ -15,7 +15,7 @@ func _ready() -> void:
 	_settings_menu.visible = false
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
 		var paused : bool = not visible
 		get_tree().paused = paused

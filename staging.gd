@@ -74,11 +74,12 @@ func handle_quit() -> void:
 		if _tween:
 			_tween.kill()
 		_tween = get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-		_tween.tween_method(_set_fade, 0.0, 1.0, 1.0)
-		await _tween.finished
+		_tween.tween_method(_set_fade, 0.0, 1.0, 0.5)
 		
 		# Save the scene state
 		_current_scene.save_scene_state()
+		
+		await _tween.finished
 	
 	PlayerManager.save_state()
 	

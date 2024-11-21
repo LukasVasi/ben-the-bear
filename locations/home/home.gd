@@ -93,6 +93,6 @@ func _on_dialogic_signal_event(argument: String) -> void:
 				_map.visibility_state_changed.connect(_on_map_visibility_state_changed)
 
 
-func _on_eddie_the_hedgehog_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_eddie_the_hedgehog_input_event(_viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("interact"):
 		Dialogic.start("eddie_timeline", "additional_info")
