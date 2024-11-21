@@ -1,10 +1,6 @@
-set {HomeScene.Checkpoint} = "intro_start"
-- Skip intro
-	set {HomeScene.Checkpoint} = "intro_skip"
-	[save slot="home_save"]
-	jump tutorial_timeline/
-- Play intro
-	narrator: Hello, welcome to Ben The Bear, a point and click dialogue based detective game.
-	narrator: Hope you have a good time playing!
-	narrator: Now without further ado, let's meat your great friend - Eddie the hedgehog.
-	jump eddie_intro_timeline/
+narrator: Hello, welcome to Ben The Bear, a point and click dialogue based detective game.
+narrator: You will be playing as Ben - one of the finest officers of the local police force.
+narrator: Hope you have a good time playing!
+narrator: Now without further ado, let's meat your great friend - Eddie the hedgehog.
+[signal arg="checkpoint_intro_finished"]
+jump eddie_timeline/

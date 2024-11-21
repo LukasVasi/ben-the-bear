@@ -30,7 +30,7 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
-"eddie_intro_timeline": "res://dialogue_timelines/eddie_intro_timeline.dtl",
+"eddie_timeline": "res://dialogue_timelines/eddie_timeline.dtl",
 "goon_timeline": "res://dialogue_timelines/goon_timeline.dtl",
 "intro_timeline": "res://dialogue_timelines/intro_timeline.dtl",
 "tutorial_timeline": "res://dialogue_timelines/tutorial_timeline.dtl"

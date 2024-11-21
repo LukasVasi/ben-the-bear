@@ -2197,7 +2197,6 @@ sources/1 = SubResource("TileSetAtlasSource_djqpd")
 
 [node name="HairSalon" type="Node2D" groups=["scene_base"]]
 script = ExtResource("1_3jguf")
-scene_name = "HairSalon"
 
 [node name="Player" parent="." instance=ExtResource("2_bsdlh")]
 z_index = 1

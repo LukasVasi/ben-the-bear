@@ -2197,7 +2197,6 @@ sources/1 = SubResource("TileSetAtlasSource_djqpd")
 
 [node name="Bakery" type="Node2D" groups=["scene_base"]]
 script = ExtResource("1_m7e3h")
-scene_name = "Bakery"
 
 [node name="Player" parent="." instance=ExtResource("2_tx4kx")]
 z_index = 1

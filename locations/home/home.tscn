@@ -2212,7 +2212,6 @@ size = Vector2(20, 20)
 
 [node name="Home" type="Node2D" groups=["scene_base"]]
 script = ExtResource("1_di55a")
-scene_name = "Home"
 
 [node name="Player" parent="." instance=ExtResource("2_1vldp")]
 z_index = 1
