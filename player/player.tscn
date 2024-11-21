@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwi8alibbja0m"]
+[gd_scene load_steps=14 format=3 uid="uid://cwi8alibbja0m"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5c0ni"]
 [ext_resource type="Texture2D" uid="uid://01dot8r7c2l1" path="res://assets/custom/BenTheBear.png" id="2_58j0a"]
@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://diyai0fok5n5c" path="res://assets/sounds/achievement.wav" id="6_g4k5d"]
 [ext_resource type="Texture2D" uid="uid://bdp17anwkt5hg" path="res://assets/kenney_cursor_pixel_pack/Tiles/tile_0180.png" id="7_3putm"]
 [ext_resource type="PackedScene" uid="uid://dy35p4ooig37s" path="res://ui/map.tscn" id="8_uw4rf"]
+[ext_resource type="Theme" uid="uid://c043uyufavnx4" path="res://assets/ui_theme.tres" id="9_81ovj"]
+[ext_resource type="Script" path="res://ui/volume_slider.gd" id="10_2fuh6"]
+[ext_resource type="Script" path="res://ui/pause_menu.gd" id="10_46x7l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgsvi"]
 
@@ -60,3 +63,139 @@ one_shot = true
 
 [node name="Map" parent="." instance=ExtResource("8_uw4rf")]
 visible = false
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+visible = false
+top_level = true
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_81ovj")
+script = ExtResource("10_46x7l")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.153472, 0.235432, 0.11697, 0.470588)
+
+[node name="PauseMenuContainer" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/PauseMenuContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/PauseMenuContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_81ovj")
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_81ovj")
+text = "Resume
+"
+
+[node name="SettingsButton" type="Button" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_81ovj")
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_81ovj")
+text = "Quit"
+
+[node name="SettingsContainer" type="CenterContainer" parent="PauseMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/SettingsContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/SettingsContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_81ovj")
+text = "Settings"
+
+[node name="SFXVolumeHBoxContainer" type="HBoxContainer" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/SFXVolumeHBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "SFX"
+
+[node name="SFXHSlider" type="HSlider" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/SFXVolumeHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+script = ExtResource("10_2fuh6")
+bus_name = "SFX"
+
+[node name="MusicVolumeHBoxContainer2" type="HBoxContainer" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeHBoxContainer2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="MusicHSlider" type="HSlider" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeHBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+script = ExtResource("10_2fuh6")
+bus_name = "Music"
+
+[node name="ButtonsHBoxContainer" type="HBoxContainer" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_81ovj")
+text = "Save"
+
+[node name="CancelButton" type="Button" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_81ovj")
+text = "Cancel"
+
+[connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="PauseMenu" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/SaveButton" to="PauseMenu" method="_on_settings_save_button_pressed"]
+[connection signal="pressed" from="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/CancelButton" to="PauseMenu" method="_on_cancel_button_pressed"]

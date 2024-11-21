@@ -69,7 +69,7 @@ func handle_quit() -> void:
 		# Fade to black
 		if _tween:
 			_tween.kill()
-		_tween = get_tree().create_tween()
+		_tween = get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 		_tween.tween_method(_set_fade, 0.0, 1.0, 1.0)
 		await _tween.finished
 		
