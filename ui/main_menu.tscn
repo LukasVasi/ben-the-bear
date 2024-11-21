@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://fyguv6e6pop8"]
+[gd_scene load_steps=4 format=3 uid="uid://fyguv6e6pop8"]
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_0ibty"]
+[ext_resource type="Theme" uid="uid://c043uyufavnx4" path="res://assets/ui_theme.tres" id="2_y028l"]
+[ext_resource type="Script" path="res://ui/volume_slider.gd" id="4_8jwwu"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,37 +11,125 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_y028l")
 script = ExtResource("1_0ibty")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -50.5
-offset_right = 35.0
-offset_bottom = 50.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.430267, 0.815562, 0.347192, 1)
+
+[node name="MainMenuContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuContainer"]
 layout_mode = 2
 
-[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuContainer/PanelContainer"]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_y028l")
+text = "Ben The Bear"
+
+[node name="PlayButton" type="Button" parent="MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_y028l")
 text = "Play"
 
-[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_y028l")
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_y028l")
 text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="SettingsContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="SettingsContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_y028l")
+text = "Settings"
+
+[node name="SFXVolumeHBoxContainer" type="HBoxContainer" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/SFXVolumeHBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "SFX"
+
+[node name="SFXHSlider" type="HSlider" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/SFXVolumeHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+script = ExtResource("4_8jwwu")
+bus_name = "SFX"
+
+[node name="MusicVolumeHBoxContainer2" type="HBoxContainer" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeHBoxContainer2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="MusicHSlider" type="HSlider" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeHBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+script = ExtResource("4_8jwwu")
+bus_name = "Music"
+
+[node name="ButtonsHBoxContainer" type="HBoxContainer" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_y028l")
+text = "Save"
+
+[node name="CancelButton" type="Button" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_y028l")
+text = "Cancel"
+
+[connection signal="pressed" from="MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/SaveButton" to="." method="_on_settings_save_button_pressed"]
+[connection signal="pressed" from="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/CancelButton" to="." method="_on_settings_cancel_button_pressed"]

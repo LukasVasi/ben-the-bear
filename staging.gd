@@ -5,6 +5,7 @@ extends Node
 
 @onready var _scene_container : Node = get_node("SceneContainer")
 @onready var _fade : ColorRect = get_node("Fade")
+@onready var _music_player : AudioStreamPlayer = get_node("MusicPlayer")
 
 var _current_scene : SceneBase
 var _current_scene_path : String
@@ -85,3 +86,10 @@ func _notification(what: int) -> void:
 
 func _set_fade(value : float):
 	_fade.color.a = value
+
+
+func _on_music_player_finished() -> void:
+	var tween := get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).tween_interval(25)
+	await tween.finished
+	
+	_music_player.play() # reset music after a delay
