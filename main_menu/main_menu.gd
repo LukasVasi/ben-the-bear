@@ -1,9 +1,6 @@
 class_name MainMenu
 extends SceneBase
 
-@onready var _staging: Staging = get_tree().get_first_node_in_group("staging")
-
-
 func load_scene_state() -> void:
 	pass # override to do nothing
 
@@ -13,7 +10,7 @@ func save_scene_state() -> void:
 
 
 func _on_play_button_pressed() -> void:
-	_staging.load_scene("res://locations/home/home.tscn")
+	staging.load_scene("res://locations/home/home.tscn")
 
 
 func _on_settings_button_pressed() -> void:
@@ -21,4 +18,4 @@ func _on_settings_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
-	_staging.handle_quit()
+	staging.handle_quit()

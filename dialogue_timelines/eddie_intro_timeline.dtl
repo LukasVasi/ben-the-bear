@@ -1,3 +1,4 @@
+set {HomeScene.Checkpoint} = "eddie_intro_start"
 eddie_the_hedgehog: Ben!
 eddie_the_hedgehog: I need your help!
 eddie_the_hedgehog: I think I've been robbed!
@@ -9,10 +10,12 @@ eddie_the_hedgehog: So I was hoping that you could help me... Not as  a police o
 - Sure, man, I'll help
 	label the quest accepted
 	eddie_the_hedgehog: YES! THAT'S WHAT'S UP! I KNEW I COULD TRUST YOU!
+	set {HomeScene.Checkpoint} = "eddie_intro_finished"
+	[end_timeline]
 - Sorry, man, can't do.
 	narrator: Wait a second.
 	narrator: You do realise, this game is kind of about helping your friend out, right?
-	narrator: You don't accept the call to adventure, there kind of can't be an adventure...
+	narrator: If you don't accept the call to adventure, there won't be an adventure...
 	narrator: Are you absolutely sure?
 	- Ok, ok, I help him out... I guess...
 		label the change of heart (Change of heart)
@@ -33,3 +36,4 @@ eddie_the_hedgehog: So I was hoping that you could help me... Not as  a police o
 				narrator: Ugh...
 				narrator: I guess we're done here then...
 				[signal arg="quit_game"]
+				[end_timeline]

@@ -1,4 +1,7 @@
+set {HomeScene.Checkpoint} = "intro_start"
 - Skip intro
+	set {HomeScene.Checkpoint} = "intro_skip"
+	[save slot="home_save"]
 	[end_timeline]
 - Play intro
 	narrator: Hello, welcome to Ben The Bear, a point and click dialogue based detective game.

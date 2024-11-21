@@ -5,6 +5,7 @@ extends Node
 
 var scene_state : Dictionary
 
+@onready var staging: Staging = get_tree().get_first_node_in_group("staging")
 
 func load_scene_state() -> void:
 	scene_state = SaveManager.load_scene_state(scene_name)
