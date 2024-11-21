@@ -6,11 +6,6 @@ extends Node
 var scene_state : Dictionary
 
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("test_save"):
-		save_scene_state()
-
-
 func load_scene_state() -> void:
 	scene_state = SaveManager.load_scene_state(scene_name)
 	_load_object_states()

@@ -5,11 +5,11 @@ extends SceneBase
 
 
 func load_scene_state() -> void:
-	return # override to do nothing
+	pass # override to do nothing
 
 
 func save_scene_state() -> void:
-	return # override to do nothing
+	pass # override to do nothing
 
 
 func _on_play_button_pressed() -> void:
@@ -21,4 +21,4 @@ func _on_settings_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
-	get_tree().quit()
+	_staging.handle_quit()
