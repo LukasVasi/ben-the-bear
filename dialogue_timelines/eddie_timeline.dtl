@@ -36,3 +36,10 @@ eddie_the_hedgehog: So I was hoping that you could help me... Not as  a police o
 				[signal arg="checkpoint_quest_refused"]
 				[signal arg="quit_game"]
 				[end_timeline]
+label additional_info
+eddie_the_hedgehog: How can I help you?
+- Where could you have lost the basket?
+	eddie_the_hedgehog: To be honest, I am not entirely sure...
+	eddie_the_hedgehog: I visited the bakery and the hair salon today.
+	eddie_the_hedgehog: Could be the places to start the search.
+	[end_timeline]

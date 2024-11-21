@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy35p4ooig37s"]
+[gd_scene load_steps=4 format=3 uid="uid://dy35p4ooig37s"]
 
+[ext_resource type="Theme" uid="uid://c043uyufavnx4" path="res://assets/ui_theme.tres" id="1_fgay1"]
 [ext_resource type="Script" path="res://ui/map.gd" id="1_k5yi0"]
+[ext_resource type="Texture2D" uid="uid://brdc3gjn6edje" path="res://assets/custom/map.png" id="3_iu1r5"]
 
 [node name="Map" type="Control"]
 top_level = true
@@ -11,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_fgay1")
 script = ExtResource("1_k5yi0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -34,32 +37,32 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer"]
+[node name="ColorRect" type="TextureRect" parent="ColorRect/MarginContainer"]
 layout_mode = 2
-color = Color(0.893632, 0.825039, 0.723557, 1)
+texture = ExtResource("3_iu1r5")
 
 [node name="HomeButton" type="Button" parent="ColorRect/MarginContainer/ColorRect"]
 layout_mode = 0
-offset_left = 243.0
-offset_top = 62.0
-offset_right = 251.0
-offset_bottom = 70.0
+offset_left = 317.0
+offset_top = 228.0
+offset_right = 372.0
+offset_bottom = 259.0
 text = "Home"
 
 [node name="BakeryButton" type="Button" parent="ColorRect/MarginContainer/ColorRect"]
 layout_mode = 0
-offset_left = 130.0
-offset_top = 161.0
-offset_right = 138.0
-offset_bottom = 169.0
+offset_left = 155.0
+offset_top = 177.0
+offset_right = 211.0
+offset_bottom = 201.0
 text = "Bakery"
 
 [node name="HairSalonButton" type="Button" parent="ColorRect/MarginContainer/ColorRect"]
 layout_mode = 0
-offset_left = 391.0
-offset_top = 167.0
-offset_right = 399.0
-offset_bottom = 175.0
+offset_left = 260.0
+offset_top = 115.0
+offset_right = 348.0
+offset_bottom = 139.0
 text = "Hair Salon"
 
 [connection signal="pressed" from="ColorRect/MarginContainer/ColorRect/HomeButton" to="." method="_on_home_button_pressed"]

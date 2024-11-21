@@ -91,3 +91,8 @@ func _on_dialogic_signal_event(argument: String) -> void:
 				_movement_area.visible = true
 				_movement_area.body_entered.connect(_on_movement_area_body_entered)
 				_map.visibility_state_changed.connect(_on_map_visibility_state_changed)
+
+
+func _on_eddie_the_hedgehog_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("interact"):
+		Dialogic.start("eddie_timeline", "additional_info")

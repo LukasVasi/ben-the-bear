@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3dlf53wxll3i"]
+
+[ext_resource type="Script" path="res://characters/eddie_the_hedgehog.gd" id="1_t4c5t"]
+[ext_resource type="Shader" path="res://materials/outline_shader.gdshader" id="2_0ah4r"]
+[ext_resource type="Texture2D" uid="uid://01dot8r7c2l1" path="res://assets/custom/BenTheBear.png" id="3_ijt3v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfja7"]
+shader = ExtResource("2_0ah4r")
+shader_parameter/enabled = false
+shader_parameter/color = Color(0.8246, 0.583883, 0, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tj23m"]
+size = Vector2(32, 48)
+
+[node name="EddieTheHedgehog" type="Area2D"]
+script = ExtResource("1_t4c5t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_xfja7")
+position = Vector2(0, -24)
+texture = ExtResource("3_ijt3v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_tj23m")
