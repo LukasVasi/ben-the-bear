@@ -45,11 +45,11 @@ position = Vector2(383, 200)
 
 [node name="RickThePiggy" parent="." instance=ExtResource("5_rsa5w")]
 z_index = 1
-position = Vector2(282, 130)
+position = Vector2(272, 130)
 
 [node name="CargoManifest" parent="." instance=ExtResource("6_uallh")]
 z_index = 1
-position = Vector2(222, 126)
+position = Vector2(207, 187)
 texture = ExtResource("5_5txxs")
 state = SubResource("Resource_266b0")
 item = ExtResource("8_0flpy")

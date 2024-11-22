@@ -8,9 +8,9 @@
 [ext_resource type="Script" path="res://common/objects/object_state.gd" id="6_ogfee"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pjgah"]
-vertices = PackedVector2Array(448, 208, 192, 208, 192, 144, 448, 144)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(176, 128, 176, 224, 464, 224, 464, 128)])
+vertices = PackedVector2Array(272.617, 151, 448.82, 151, 448.18, 208, 271.609, 192, 192, 208, 192, 192)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(176, 176, 176, 224, 464, 224, 465, 135, 257, 135, 256, 176)])
 agent_radius = 16.0
 
 [sub_resource type="Resource" id="Resource_uwn4g"]
@@ -26,7 +26,7 @@ position = Vector2(206, 199)
 
 [node name="NinaTheKitty" parent="." instance=ExtResource("5_3npsl")]
 z_index = 1
-position = Vector2(400, 201)
+position = Vector2(416, 208)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("4_pj67e")

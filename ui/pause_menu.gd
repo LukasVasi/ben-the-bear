@@ -3,6 +3,7 @@ extends Control
 
 @onready var _pause_menu : CenterContainer = get_node("PauseMenuContainer")
 @onready var _settings_menu : CenterContainer = get_node("SettingsContainer")
+@onready var _tutorial_menu : CenterContainer = get_node("TutorialContainer")
 @onready var _sfx_slider : VolumeSlider = get_node("SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/SFXVolumeHBoxContainer/SFXHSlider")
 @onready var _music_slider : VolumeSlider = get_node("SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeHBoxContainer2/MusicHSlider")
 
@@ -47,4 +48,14 @@ func _on_cancel_button_pressed() -> void:
 	_sfx_slider.value = _original_sfx_volume
 	_music_slider.value = _original_music_volume
 	_settings_menu.visible = false
+	_pause_menu.visible = true
+
+
+func _on_tutorial_button_pressed() -> void:
+	_pause_menu.visible = false
+	_tutorial_menu.visible = true
+
+
+func _on_tutorial_back_button_pressed() -> void:
+	_tutorial_menu.visible = false
 	_pause_menu.visible = true

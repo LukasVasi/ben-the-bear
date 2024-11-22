@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://01dot8r7c2l1"
-path="res://.godot/imported/BenTheBear.png-8797e52f096a6f5eaf776228a4a60e18.ctex"
+uid="uid://dgvqh7j40jmao"
+path="res://.godot/imported/ben_the_bear.png-cca8070c88d3f4f10cdb7eaeb09f9012.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/custom/BenTheBear.png"
-dest_files=["res://.godot/imported/BenTheBear.png-8797e52f096a6f5eaf776228a4a60e18.ctex"]
+source_file="res://assets/custom/ben_the_bear.png"
+dest_files=["res://.godot/imported/ben_the_bear.png-cca8070c88d3f4f10cdb7eaeb09f9012.ctex"]
 
 [params]
 

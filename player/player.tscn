@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cwi8alibbja0m"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5c0ni"]
-[ext_resource type="Texture2D" uid="uid://01dot8r7c2l1" path="res://assets/custom/BenTheBear.png" id="2_58j0a"]
+[ext_resource type="Texture2D" uid="uid://dgvqh7j40jmao" path="res://assets/custom/ben_the_bear.png" id="2_twuov"]
 [ext_resource type="Texture2D" uid="uid://c4hr5j43kfk83" path="res://assets/kenney_cursor_pixel_pack/Tiles/tile_0006.png" id="3_j10kq"]
 [ext_resource type="Material" uid="uid://tihwlgxgq06p" path="res://materials/interactable_object_shader_material.tres" id="3_ncpd0"]
 [ext_resource type="Script" path="res://player/search_cursor.gd" id="4_bx0wj"]
@@ -39,7 +39,7 @@ shape = SubResource("CircleShape2D_lgsvi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -20)
-texture = ExtResource("2_58j0a")
+texture = ExtResource("2_twuov")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
@@ -126,10 +126,65 @@ layout_mode = 2
 theme = ExtResource("9_81ovj")
 text = "Settings"
 
+[node name="TutorialButton" type="Button" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_81ovj")
+text = "Tutorial"
+
 [node name="QuitButton" type="Button" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_81ovj")
 text = "Quit"
+
+[node name="TutorialContainer" type="CenterContainer" parent="PauseMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -26.0
+offset_right = 36.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/TutorialContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/TutorialContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/TutorialContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/TutorialContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_81ovj")
+text = "Tutorial
+"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseMenu/TutorialContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 2
+text = "Press Left Click to move around the scene and interact with objects and characters.
+
+Press E to enable search mode. In this mode your cursor becomes a magnifier that shakes the closer it is to an object and automatically discovers hidden objects.
+
+Press M to open the map. It allows you to travel between scenes.
+
+Press I to open the inventory. Here you can click on an item to interact with it (opens a dialog).
+"
+shortcut_keys_enabled = false
+
+[node name="BackButton" type="Button" parent="PauseMenu/TutorialContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_81ovj")
+text = "Back"
 
 [node name="SettingsContainer" type="CenterContainer" parent="PauseMenu"]
 visible = false
@@ -280,8 +335,9 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_left = 16.0
 offset_top = -40.0
-offset_right = 40.0
+offset_right = 56.0
 grow_vertical = 0
 theme = ExtResource("9_81ovj")
 script = ExtResource("12_of1hx")
@@ -317,6 +373,8 @@ layout_mode = 2
 
 [connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="PauseMenu" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton" to="PauseMenu" method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PauseMenu/TutorialContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="PauseMenu" method="_on_tutorial_back_button_pressed"]
 [connection signal="pressed" from="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/SaveButton" to="PauseMenu" method="_on_settings_save_button_pressed"]
 [connection signal="pressed" from="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/CancelButton" to="PauseMenu" method="_on_cancel_button_pressed"]
