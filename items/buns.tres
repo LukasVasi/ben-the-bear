@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b4yn2yefl6csj"]
 
 [ext_resource type="Script" path="res://items/item.gd" id="1_0asvw"]
-[ext_resource type="Texture2D" uid="uid://f4q4jcuefhlb" path="res://assets/custom/map_item.png" id="2_2hr7x"]
+[ext_resource type="Texture2D" uid="uid://f1bss0a7rerj" path="res://assets/custom/buns_item.png" id="2_e4aqq"]
 
 [resource]
 script = ExtResource("1_0asvw")
 name = "Buns"
 timeline = "buns_timeline"
-texture = ExtResource("2_2hr7x")
+texture = ExtResource("2_e4aqq")

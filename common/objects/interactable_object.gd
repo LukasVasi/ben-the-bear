@@ -30,7 +30,7 @@ func load_object(parent: SceneBase, saved_state: ObjectState) -> void:
 	_parent_scene = parent
 	if is_instance_valid(saved_state):
 		state = saved_state # override the default state if provided
-		
+		_update_visual()
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
@@ -58,6 +58,17 @@ func find() -> void:
 	if state.visibility_state == ObjectState.VisibilityState.Hidden:
 		print("Object ", self, " has been found")
 		state.visibility_state = ObjectState.VisibilityState.Found
+		visibility_state_changed.emit(state.visibility_state)
+		_update_visual()
+		_parent_scene.update_object_state(name, state)
+
+
+func enable() -> void:
+	if Engine.is_editor_hint():
+		return
+	
+	if state.visibility_state == ObjectState.VisibilityState.Disabled:
+		state.visibility_state = ObjectState.VisibilityState.Hidden
 		visibility_state_changed.emit(state.visibility_state)
 		_update_visual()
 		_parent_scene.update_object_state(name, state)

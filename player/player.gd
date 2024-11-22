@@ -25,7 +25,7 @@ func _process(_delta: float) -> void:
 		if _pointer_state == PointerState.Search:
 			_toggle_search()
 	
-	if Input.is_action_just_pressed("open_map"):
+	if Input.is_action_just_pressed("open_map") and PlayerManager.has_map():
 		if _pointer_state == PointerState.Search:
 			_toggle_search()
 		

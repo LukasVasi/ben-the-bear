@@ -1,13 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://ekf0dpl2p2kg"]
+[gd_scene load_steps=18 format=3 uid="uid://ekf0dpl2p2kg"]
 
 [ext_resource type="Script" path="res://locations/bakery/bakery.gd" id="1_m7e3h"]
+[ext_resource type="Resource" uid="uid://dtlq5v55txgg8" path="res://items/basket.tres" id="2_6hdw3"]
 [ext_resource type="PackedScene" uid="uid://cwi8alibbja0m" path="res://player/player.tscn" id="2_tx4kx"]
+[ext_resource type="Texture2D" uid="uid://d4dgs8nwo7p2w" path="res://assets/custom/manifest_object.png" id="5_5txxs"]
 [ext_resource type="PackedScene" uid="uid://b1g0b55xepl88" path="res://characters/rick_the_piggy.tscn" id="5_rsa5w"]
 [ext_resource type="PackedScene" uid="uid://t66hwg54uwhv" path="res://common/objects/interactable_object.tscn" id="6_uallh"]
 [ext_resource type="Script" path="res://common/objects/object_state.gd" id="7_o48ks"]
 [ext_resource type="Resource" uid="uid://hwt3dwktnf8b" path="res://items/manifest.tres" id="8_0flpy"]
 [ext_resource type="Texture2D" uid="uid://5klqtehdhbmd" path="res://assets/custom/bakery.png" id="8_nsspy"]
+[ext_resource type="PackedScene" uid="uid://cm8vdpyn1jj67" path="res://common/objects/coins.tscn" id="9_rrleh"]
 [ext_resource type="Resource" uid="uid://b4yn2yefl6csj" path="res://items/buns.tres" id="9_ud3xk"]
+[ext_resource type="Texture2D" uid="uid://dto3h2lxuqy4u" path="res://assets/custom/buns_object.png" id="10_5ujfq"]
 
 [sub_resource type="Resource" id="Resource_266b0"]
 script = ExtResource("7_o48ks")
@@ -23,8 +27,17 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(178, 145, 318, 145, 318, 178, 461, 178, 461, 222, 178, 222)])
 agent_radius = 16.0
 
+[sub_resource type="Resource" id="Resource_q5qwt"]
+script = ExtResource("7_o48ks")
+visibility_state = 1
+
+[sub_resource type="Resource" id="Resource_fjps7"]
+script = ExtResource("7_o48ks")
+visibility_state = 0
+
 [node name="Bakery" type="Node2D" groups=["scene_base"]]
 script = ExtResource("1_m7e3h")
+_basket_item = ExtResource("2_6hdw3")
 
 [node name="Player" parent="." instance=ExtResource("2_tx4kx")]
 z_index = 1
@@ -32,10 +45,12 @@ position = Vector2(383, 200)
 
 [node name="RickThePiggy" parent="." instance=ExtResource("5_rsa5w")]
 z_index = 1
-position = Vector2(282, 120)
+position = Vector2(282, 130)
 
 [node name="CargoManifest" parent="." instance=ExtResource("6_uallh")]
-position = Vector2(313, 210)
+z_index = 1
+position = Vector2(222, 126)
+texture = ExtResource("5_5txxs")
 state = SubResource("Resource_266b0")
 item = ExtResource("8_0flpy")
 
@@ -49,6 +64,17 @@ centered = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_uvt7s")
+
+[node name="Coins" parent="." instance=ExtResource("9_rrleh")]
+z_index = 1
+position = Vector2(258, 285)
+state = SubResource("Resource_q5qwt")
+
+[node name="Buns" parent="." instance=ExtResource("6_uallh")]
+position = Vector2(246, 123)
+texture = ExtResource("10_5ujfq")
+state = SubResource("Resource_fjps7")
+item = ExtResource("9_ud3xk")
 
 [connection signal="input_event" from="RickThePiggy" to="." method="_on_rick_input_event"]
 [connection signal="visibility_state_changed" from="BunsWithMushrooms" to="." method="_on_buns_visibility_state_changed"]

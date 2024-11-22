@@ -16,9 +16,7 @@ func _process(_delta: float) -> void:
 
 func _open_inventory() -> void:
 	var inventory : Array[Item] = PlayerManager.get_inventory()
-	var slot : int = 0
-	for item : Item in inventory:
-		_inv_slots[slot].set_item(item)
-		slot += 1
+	for i : int in min(inventory.size(), _inv_slots.size()):
+		_inv_slots[i].set_item(inventory[i])
 	
 	visible = true

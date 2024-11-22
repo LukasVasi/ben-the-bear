@@ -4,6 +4,8 @@ extends SceneBase
 @onready var _movement_area : Area2D = get_node("MovementArea")
 @onready var _map : InteractableObject = get_node("Map")
 
+var _tutorial : bool = false
+
 func load_scene_state() -> void:
 	super()
 	Dialogic.signal_event.connect(_on_dialogic_signal_event)
@@ -40,10 +42,9 @@ func load_scene_state() -> void:
 
 func cleanup() -> void:
 	Dialogic.signal_event.disconnect(_on_dialogic_signal_event)
-	#Dialogic.event_handled.disconnect(_on_handle_event)
-	# TODO: check for signal existanse beforehand
-	_movement_area.body_entered.disconnect(_on_movement_area_body_entered)
-	_map.visibility_state_changed.disconnect(_on_map_visibility_state_changed)
+	if _tutorial:
+		_movement_area.body_entered.disconnect(_on_movement_area_body_entered)
+		_map.visibility_state_changed.disconnect(_on_map_visibility_state_changed)
 
 
 func _on_map_visibility_state_changed(state: ObjectState.VisibilityState) -> void:
@@ -89,6 +90,7 @@ func _on_dialogic_signal_event(argument: String) -> void:
 			"quit_game":
 				staging.handle_quit()
 			"tutorial_accepted":
+				_tutorial = true
 				_movement_area.visible = true
 				_movement_area.body_entered.connect(_on_movement_area_body_entered)
 				_map.visibility_state_changed.connect(_on_map_visibility_state_changed)

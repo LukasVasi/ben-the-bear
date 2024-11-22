@@ -1,15 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://drvwh07gn2o8j"]
+[gd_scene load_steps=9 format=3 uid="uid://drvwh07gn2o8j"]
 
 [ext_resource type="Script" path="res://locations/hair_salon/hair_salon.gd" id="1_3jguf"]
 [ext_resource type="PackedScene" uid="uid://cwi8alibbja0m" path="res://player/player.tscn" id="2_bsdlh"]
 [ext_resource type="Texture2D" uid="uid://c7r8ws3tilsm4" path="res://assets/custom/hair_salon.png" id="4_pj67e"]
 [ext_resource type="PackedScene" uid="uid://c4b8v7e8c3gc4" path="res://characters/nina_the_kitty.tscn" id="5_3npsl"]
+[ext_resource type="PackedScene" uid="uid://cm8vdpyn1jj67" path="res://common/objects/coins.tscn" id="5_awsmf"]
+[ext_resource type="Script" path="res://common/objects/object_state.gd" id="6_ogfee"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pjgah"]
 vertices = PackedVector2Array(448, 208, 192, 208, 192, 144, 448, 144)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(176, 128, 176, 224, 464, 224, 464, 128)])
 agent_radius = 16.0
+
+[sub_resource type="Resource" id="Resource_uwn4g"]
+script = ExtResource("6_ogfee")
+visibility_state = 1
 
 [node name="HairSalon" type="Node2D" groups=["scene_base"]]
 script = ExtResource("1_3jguf")
@@ -28,5 +34,9 @@ centered = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_pjgah")
+
+[node name="Coins" parent="." instance=ExtResource("5_awsmf")]
+position = Vector2(235, 139)
+state = SubResource("Resource_uwn4g")
 
 [connection signal="input_event" from="NinaTheKitty" to="." method="_on_nina_input_event"]

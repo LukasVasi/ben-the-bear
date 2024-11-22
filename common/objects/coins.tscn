@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://cm8vdpyn1jj67"]
+
+[ext_resource type="Script" path="res://common/objects/coins.gd" id="1_iofmg"]
+[ext_resource type="Texture2D" uid="uid://bqg7exnxilosu" path="res://assets/custom/coins.png" id="2_taiqa"]
+[ext_resource type="Script" path="res://common/objects/object_state.gd" id="3_873a6"]
+[ext_resource type="Shader" path="res://materials/outline_shader.gdshader" id="4_h7u3a"]
+
+[sub_resource type="Resource" id="Resource_33pwq"]
+script = ExtResource("3_873a6")
+visibility_state = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fodcb"]
+shader = ExtResource("4_h7u3a")
+shader_parameter/enabled = false
+shader_parameter/color = Color(0.8246, 0.583883, 0, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvho2"]
+
+[node name="Coins" type="Area2D" groups=["interactable_object"]]
+position = Vector2(451, 189)
+script = ExtResource("1_iofmg")
+texture = ExtResource("2_taiqa")
+state = SubResource("Resource_33pwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fodcb")
+texture = ExtResource("2_taiqa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hvho2")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -1,21 +1,14 @@
-[gd_scene load_steps=20 format=4 uid="uid://cha5jd3cvxfsy"]
+[gd_scene load_steps=14 format=4 uid="uid://cha5jd3cvxfsy"]
 
 [ext_resource type="Script" path="res://locations/home/home.gd" id="1_di55a"]
 [ext_resource type="PackedScene" uid="uid://cwi8alibbja0m" path="res://player/player.tscn" id="2_1vldp"]
 [ext_resource type="TileSet" uid="uid://c7oc3t7kiu6g0" path="res://tile_set.tres" id="3_d1103"]
-[ext_resource type="Texture2D" uid="uid://b4i5u4pbanvsh" path="res://assets/custom/book.png" id="5_7ynrw"]
 [ext_resource type="PackedScene" uid="uid://t66hwg54uwhv" path="res://common/objects/interactable_object.tscn" id="5_e4hi1"]
 [ext_resource type="Texture2D" uid="uid://cnqje463vsta7" path="res://assets/custom/map_object.png" id="7_8b8yy"]
 [ext_resource type="Script" path="res://common/objects/object_state.gd" id="7_t0xiu"]
 [ext_resource type="PackedScene" uid="uid://c3dlf53wxll3i" path="res://characters/eddie_the_hedgehog.tscn" id="7_x8775"]
 [ext_resource type="Resource" uid="uid://bftlh6f2dx88l" path="res://items/map.tres" id="8_y4vjt"]
-[ext_resource type="Script" path="res://common/objects/coins.gd" id="9_a2a0n"]
-[ext_resource type="Shader" path="res://materials/outline_shader.gdshader" id="10_8ks1q"]
-[ext_resource type="Texture2D" uid="uid://bqg7exnxilosu" path="res://assets/custom/coins.png" id="11_sk220"]
-
-[sub_resource type="Resource" id="Resource_f8i5m"]
-script = ExtResource("7_t0xiu")
-visibility_state = 1
+[ext_resource type="PackedScene" uid="uid://cm8vdpyn1jj67" path="res://common/objects/coins.tscn" id="10_tif2t"]
 
 [sub_resource type="Resource" id="Resource_u62c4"]
 script = ExtResource("7_t0xiu")
@@ -26,18 +19,9 @@ size = Vector2(20, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wxhmv"]
 
-[sub_resource type="Resource" id="Resource_33pwq"]
+[sub_resource type="Resource" id="Resource_jwnah"]
 script = ExtResource("7_t0xiu")
 visibility_state = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcrg5"]
-shader = ExtResource("10_8ks1q")
-shader_parameter/enabled = false
-shader_parameter/color = Color(0.8246, 0.583883, 0, 1)
-shader_parameter/width = 1.0
-shader_parameter/pattern = 1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvho2"]
 
 [node name="Home" type="Node2D" groups=["scene_base"]]
 script = ExtResource("1_di55a")
@@ -53,11 +37,6 @@ tile_set = ExtResource("3_d1103")
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAcAA0AAAAMAAIAAAAcAA4AAAAMAAMAAAAbAA0AAAANAAAAAAAbAA4AAAANAAEAAAAMAA8AAAAGAAEAAAAMAA4AAAAGAAAAAAALAA8AAAACAAIAAAANAA4AAAADAAcAAAANAAoAAAAIAA4AAAAKAAsAAAAKAA4AAAAKAAoAAAAKAAwAAAAMAAoAAAADAA4AAAALAAoAAAAOAA4AAAAXAAkAAAASAA0AAAAbAAoAAAAOAA0AAAAcAAoAAAAPAA0AAAAaAAsAAAAWAA8AAAAaAAoAAAAWAA4AAAAOAAoAAAAHAA4AAAAUAAkAAQAyAAwAAAASAAkAAQAtAAwAAAATAAkAAQAvAA0AAAATAAoAAQAwAAwAAAAUAAoAAQAyAA4AAAASAAoAAQAtAAwAAAANABQAAQAoAAAAAAARABQAAQAoAAAAAAAVABQAAQAoAAAAAAAaABQAAQAoAAAAAAATABUAAQAhAAEAAAA=")
 tile_set = ExtResource("3_d1103")
-
-[node name="Book" parent="." instance=ExtResource("5_e4hi1")]
-position = Vector2(202, 232)
-texture = ExtResource("5_7ynrw")
-state = SubResource("Resource_f8i5m")
 
 [node name="Map" parent="." instance=ExtResource("5_e4hi1")]
 position = Vector2(313, 157)
@@ -80,18 +59,7 @@ shape = SubResource("CircleShape2D_wxhmv")
 position = Vector2(295, 241)
 script = null
 
-[node name="Coins" type="Area2D" parent="." groups=["interactable_object"]]
-position = Vector2(451, 189)
-script = ExtResource("9_a2a0n")
-texture = ExtResource("11_sk220")
-state = SubResource("Resource_33pwq")
-
-[node name="Sprite2D" type="Sprite2D" parent="Coins"]
-material = SubResource("ShaderMaterial_wcrg5")
-texture = ExtResource("11_sk220")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coins"]
-shape = SubResource("RectangleShape2D_hvho2")
+[node name="Coins" parent="." instance=ExtResource("10_tif2t")]
+state = SubResource("Resource_jwnah")
 
 [connection signal="input_event" from="EddieTheHedgehog" to="." method="_on_eddie_the_hedgehog_input_event"]
-[connection signal="input_event" from="Coins" to="Coins" method="_on_input_event"]

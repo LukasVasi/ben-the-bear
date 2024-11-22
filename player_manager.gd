@@ -52,6 +52,10 @@ func get_inventory() -> Array[Item]:
 	return player_state.inventory
 
 
+func has_map() -> bool:
+	return player_state.inventory.any(func (item : Item): return item.name == "Map")
+
+
 func save_state() -> void:
 	# Retrieve the current progression variable value
 	player_state.progression_variable = Dialogic.VAR.get_variable("progression_variable")
