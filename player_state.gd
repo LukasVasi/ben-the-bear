@@ -6,3 +6,4 @@ extends Resource
 @export var money : int = 0
 @export var sfx_volume : float = -1.0
 @export var music_volume : float = -1.0
+@export var progression_variable : String = "on_the_case"

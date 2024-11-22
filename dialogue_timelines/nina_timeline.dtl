@@ -1,0 +1,40 @@
+nina_the_kitty: Hello, officer.
+nina_the_kitty: How may I be of assistanse?
+- I am looking for Eddie's missing basket. Do you know anything about that?
+	nina_the_kitty: Hmm...
+	nina_the_kitty: No, sorry.
+	- But he was here today, right?
+		nina_the_kitty: Maybe?
+		nina_the_kitty: I'm not sure...
+		- That's not really helpful...
+			nina_the_kitty: Yeah, well, I don't know anything about this basket you're talking about.
+			nina_the_kitty: And I am quite busy, a lot of clients today.
+			nina_the_kitty: Sorry I couldn't help you.
+			narrator: Hmm, maybe becoming one of her clients could help?
+			- You know what, I wouldn't mind a cut myself. (Pay 5 coins) | [if {PlayerManager.get_money()} >= 5] [else="disable" alt_text="You know what, I wouldn't mind a cut myself. (Not enough coins)"]
+				do PlayerManager.add_money(-5)
+				nina_the_kitty: Sure, sit right down.
+				nina_the_kitty: Sorry for being so cold before.
+				nina_the_kitty: Busy day, you know?
+				- Sure.
+					nina_the_kitty: Now what were you asking me about before?
+					- Eddie's basket.
+						nina_the_kitty: Oh right. Now I remember, he was here today. Had an appointment with one of the hairdressers.
+						nina_the_kitty: Came in late though. Practically fell through the door.
+						nina_the_kitty: He was all sweaty and confused, started apologising to my colleague. Meanwhile she had just came in late herself a couple minutes earlier.
+						- Did he have the basket with him?
+							nina_the_kitty: Now that I think of it, no he didn't.
+							nina_the_kitty: I think I would've seen it right away too, he made quite the entrance.
+							nina_the_kitty: How do you like it.
+							- It's nice, thank you.
+								nina_the_kitty: Well, see you next time.
+								- Goodbye.
+									narrator: Well, if Eddie didn't have the basket by the time he got here, it leaves us with the bakery.
+									narrator: Although, I'm not sure if we can trust this lady.
+									narrator: But taking another closer look wouldn't hurt, right?
+									set {progression_variable} = "return_to_baker"
+									[end_timeline]
+							- Um, I'm not sure. (You are not brave enough) | [if true == false] [else="disable"]
+								[end_timeline]
+			- Goodbye.
+				[end_timeline]

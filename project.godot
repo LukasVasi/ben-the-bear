@@ -28,6 +28,8 @@ directories/dch_directory={
 "eddie_the_hedgehog": "res://dialogue_characters/eddie_the_hedgehog.dch",
 "goon_the_racoon": "res://dialogue_characters/goon_the_racoon.dch",
 "narrator": "res://dialogue_characters/narrator.dch",
+"nina_the_kitty": "res://dialogue_characters/nina_the_kitty.dch",
+"ricky_the_piggy": "res://dialogue_characters/ricky_the_piggy.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
@@ -39,10 +41,12 @@ directories/dtl_directory={
 "intro_timeline": "res://dialogue_timelines/intro_timeline.dtl",
 "manifest_timeline": "res://item_timelines/manifest_timeline.dtl",
 "map_timeline": "res://item_timelines/map_timeline.dtl",
+"nina_timeline": "res://dialogue_timelines/nina_timeline.dtl",
+"ricky_timeline": "res://dialogue_timelines/ricky_timeline.dtl",
 "tutorial_timeline": "res://dialogue_timelines/tutorial_timeline.dtl"
 }
-layout/style_list=["res://dialogic_style.tres"]
-layout/default_style="res://dialogic_style.tres"
+layout/style_list=["res://dialogic_style/style.tres"]
+layout/default_style="res://dialogic_style/style.tres"
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
@@ -64,12 +68,9 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
 variables={
-"Progression": {
-"FoundBuns": false,
-"SmokingGun": false,
-"SuspiciousOfBaker": false
+"progression_variable": "on_the_case"
 }
-}
+glossary/default_case_sensitive=true
 
 [display]
 

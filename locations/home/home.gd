@@ -41,6 +41,7 @@ func load_scene_state() -> void:
 func cleanup() -> void:
 	Dialogic.signal_event.disconnect(_on_dialogic_signal_event)
 	#Dialogic.event_handled.disconnect(_on_handle_event)
+	# TODO: check for signal existanse beforehand
 	_movement_area.body_entered.disconnect(_on_movement_area_body_entered)
 	_map.visibility_state_changed.disconnect(_on_map_visibility_state_changed)
 
@@ -93,6 +94,6 @@ func _on_dialogic_signal_event(argument: String) -> void:
 				_map.visibility_state_changed.connect(_on_map_visibility_state_changed)
 
 
-func _on_eddie_the_hedgehog_input_event(_viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_eddie_the_hedgehog_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("interact"):
-		Dialogic.start("eddie_timeline", "additional_info")
+		Dialogic.start("eddie_timeline", "conversation")

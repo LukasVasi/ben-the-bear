@@ -199,52 +199,8 @@ layout_mode = 2
 theme = ExtResource("9_81ovj")
 text = "Cancel"
 
-[node name="UI" type="Control" parent="."]
-top_level = true
-layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("9_81ovj")
-script = ExtResource("12_of1hx")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -25.0
-offset_right = 4.0
-offset_bottom = -17.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="VSplitContainer" type="VSplitContainer" parent="UI/PanelContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/PanelContainer/HBoxContainer/VSplitContainer"]
-layout_mode = 2
-texture = ExtResource("12_c74km")
-
-[node name="MoneyLabel" type="Label" parent="UI/PanelContainer/HBoxContainer/VSplitContainer"]
-layout_mode = 2
-
 [node name="Inventory" type="Control" parent="."]
+visible = false
 top_level = true
 z_index = 10
 layout_mode = 3
@@ -316,6 +272,51 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ItemSlot6" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
+layout_mode = 2
+
+[node name="UI" type="Control" parent="."]
+top_level = true
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("9_81ovj")
+script = ExtResource("12_of1hx")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -25.0
+offset_right = 4.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VSplitContainer" type="VSplitContainer" parent="UI/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/PanelContainer/HBoxContainer/VSplitContainer"]
+layout_mode = 2
+texture = ExtResource("12_c74km")
+
+[node name="MoneyLabel" type="Label" parent="UI/PanelContainer/HBoxContainer/VSplitContainer"]
 layout_mode = 2
 
 [connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]

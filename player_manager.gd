@@ -8,6 +8,7 @@ func _ready() -> void:
 		player_state = PlayerState.new()
 	else:
 		player_state = saved_state
+		Dialogic.VAR.set_variable("progression_variable", player_state.progression_variable)
 		print("Player state loaded:\n", saved_state)
 
 
@@ -52,4 +53,6 @@ func get_inventory() -> Array[Item]:
 
 
 func save_state() -> void:
+	# Retrieve the current progression variable value
+	player_state.progression_variable = Dialogic.VAR.get_variable("progression_variable")
 	SaveManager.save_player_state(player_state)

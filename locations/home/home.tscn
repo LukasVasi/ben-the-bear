@@ -30,7 +30,7 @@ size = Vector2(20, 20)
 script = ExtResource("7_t0xiu")
 visibility_state = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtjtc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcrg5"]
 shader = ExtResource("10_8ks1q")
 shader_parameter/enabled = false
 shader_parameter/color = Color(0.8246, 0.583883, 0, 1)
@@ -87,7 +87,7 @@ texture = ExtResource("11_sk220")
 state = SubResource("Resource_33pwq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Coins"]
-material = SubResource("ShaderMaterial_qtjtc")
+material = SubResource("ShaderMaterial_wcrg5")
 texture = ExtResource("11_sk220")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coins"]
