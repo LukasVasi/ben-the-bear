@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/eddie_the_hedgehog.gd" id="1_t4c5t"]
 [ext_resource type="Shader" path="res://materials/outline_shader.gdshader" id="2_0ah4r"]
-[ext_resource type="Texture2D" uid="uid://01dot8r7c2l1" path="res://assets/custom/BenTheBear.png" id="3_ijt3v"]
+[ext_resource type="Texture2D" uid="uid://dce5wvhamg2qv" path="res://assets/custom/eddie_the_hedgehog.png" id="3_ulkr4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfja7"]
 shader = ExtResource("2_0ah4r")
@@ -20,7 +20,7 @@ script = ExtResource("1_t4c5t")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_xfja7")
 position = Vector2(0, -24)
-texture = ExtResource("3_ijt3v")
+texture = ExtResource("3_ulkr4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -24)
