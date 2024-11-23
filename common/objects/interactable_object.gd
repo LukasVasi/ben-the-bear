@@ -10,7 +10,7 @@ signal visibility_state_changed(state : ObjectState.VisibilityState)
 @export var find_distance : float = 10
 
 ## The texture of the object.
-@export var texture : Texture2D = load("res://assets/kenney_cursor_pixel_pack/Tiles/tile_0180.png") : set = set_texture
+@export var texture : Texture2D = load("res://assets/kenney_cursor_pixel_pack/cursors/tile_0180.png") : set = set_texture
 
 @onready var _sprite : Sprite2D = get_node("Sprite2D")
 

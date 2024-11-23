@@ -72,6 +72,8 @@ variables={
 "progression_variable": "on_the_case"
 }
 glossary/default_case_sensitive=true
+audio/type_sound_bus="SFX"
+choices/hotkey_behaviour=1
 
 [display]
 

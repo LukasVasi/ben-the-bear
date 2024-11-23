@@ -1,22 +1,26 @@
 class_name Staging
 extends Node
 
-@export_file("*.tscn") var main_menu_path : String
+@export_file("*.tscn") var main_menu_path: String
 
-@onready var _scene_container : Node = get_node("SceneContainer")
-@onready var _fade : ColorRect = get_node("Fade")
-@onready var _music_player : AudioStreamPlayer = get_node("MusicPlayer")
+@onready var _scene_container: Node = get_node("SceneContainer")
+@onready var _fade: ColorRect = get_node("Fade")
+@onready var _music_player: AudioStreamPlayer = get_node("MusicPlayer")
 
-var _current_scene : SceneBase
-var _current_scene_path : String
-var _tween : Tween
+var _current_scene: SceneBase
+var _current_scene_path: String
+var _tween: Tween
 
 func _ready() -> void:
 	# Make sure we don't automatically quit when window close is requested
 	get_tree().set_auto_accept_quit(false)
-	_set_fade(1.0)
+	
+	# Make the screen black and load main menu
+	_set_fade(1.0) 
 	load_scene(main_menu_path)
+	
 	_music_player.play()
+
 
 func load_scene(scene_path: String) -> void:
 	if _current_scene_path == scene_path or scene_path == null:
