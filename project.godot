@@ -29,8 +29,7 @@ directories/dch_directory={
 "goon_the_racoon": "res://dialogue_characters/goon_the_racoon.dch",
 "narrator": "res://dialogue_characters/narrator.dch",
 "nina_the_kitty": "res://dialogue_characters/nina_the_kitty.dch",
-"ricky_the_piggy": "res://dialogue_characters/ricky_the_piggy.dch",
-"unit_test_character": "res://Tests/Resources/unit_test_character.dch"
+"ricky_the_piggy": "res://dialogue_characters/ricky_the_piggy.dch"
 }
 directories/dtl_directory={
 "basket_timeline": "res://item_timelines/basket_timeline.dtl",
@@ -74,6 +73,14 @@ variables={
 glossary/default_case_sensitive=true
 audio/type_sound_bus="SFX"
 choices/hotkey_behaviour=1
+event_default_overrides={
+"Music": {
+"audio_bus": "Music"
+},
+"Sound": {
+"audio_bus": "SFX"
+}
+}
 
 [display]
 
