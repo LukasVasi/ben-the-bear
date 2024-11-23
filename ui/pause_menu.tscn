@@ -1,0 +1,197 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxqxtivd6ehuy"]
+
+[ext_resource type="Theme" uid="uid://c043uyufavnx4" path="res://ui_theme/ui_theme.tres" id="1_56f2d"]
+[ext_resource type="Script" path="res://ui/pause_menu.gd" id="2_1rqr2"]
+[ext_resource type="Script" path="res://ui/volume_slider.gd" id="3_c6snp"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+top_level = true
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_56f2d")
+script = ExtResource("2_1rqr2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.153472, 0.235432, 0.11697, 0.470588)
+
+[node name="PauseMenuContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenuContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenuContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_56f2d")
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_56f2d")
+text = "Resume
+"
+
+[node name="SettingsButton" type="Button" parent="PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_56f2d")
+text = "Settings"
+
+[node name="TutorialButton" type="Button" parent="PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_56f2d")
+text = "Tutorial"
+
+[node name="QuitButton" type="Button" parent="PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_56f2d")
+text = "Quit"
+
+[node name="TutorialContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -26.0
+offset_right = 36.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TutorialContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TutorialContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_56f2d")
+text = "Tutorial
+"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TutorialContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 2
+text = "Press Left Click to move around the scene and interact with objects and characters.
+
+Press E to enable search mode. In this mode your cursor becomes a magnifier that shakes the closer it is to an object and automatically discovers hidden objects.
+
+Press M to open the map. It allows you to travel between scenes.
+
+Press I to open the inventory. Here you can click on an item to interact with it (opens a dialog).
+"
+shortcut_keys_enabled = false
+
+[node name="BackButton" type="Button" parent="TutorialContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_56f2d")
+text = "Back"
+
+[node name="SettingsContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="SettingsContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_56f2d")
+text = "Settings"
+
+[node name="SFXVolumeHBoxContainer" type="HBoxContainer" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/SFXVolumeHBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "SFX"
+
+[node name="SFXHSlider" type="HSlider" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/SFXVolumeHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+script = ExtResource("3_c6snp")
+bus_name = "SFX"
+
+[node name="MusicVolumeHBoxContainer2" type="HBoxContainer" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeHBoxContainer2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="MusicHSlider" type="HSlider" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeHBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+script = ExtResource("3_c6snp")
+bus_name = "Music"
+
+[node name="ButtonsHBoxContainer" type="HBoxContainer" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_56f2d")
+text = "Save"
+
+[node name="CancelButton" type="Button" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_56f2d")
+text = "Cancel"
+
+[connection signal="pressed" from="PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="TutorialContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_tutorial_back_button_pressed"]
+[connection signal="pressed" from="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/SaveButton" to="." method="_on_settings_save_button_pressed"]
+[connection signal="pressed" from="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

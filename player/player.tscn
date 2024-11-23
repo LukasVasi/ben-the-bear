@@ -1,21 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://cwi8alibbja0m"]
+[gd_scene load_steps=13 format=3 uid="uid://cwi8alibbja0m"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5c0ni"]
 [ext_resource type="Texture2D" uid="uid://dgvqh7j40jmao" path="res://assets/custom/ben_the_bear.png" id="2_twuov"]
-[ext_resource type="Texture2D" uid="uid://c4hr5j43kfk83" path="res://assets/kenney_cursor_pixel_pack/Tiles/tile_0006.png" id="3_j10kq"]
+[ext_resource type="Texture2D" uid="uid://c4hr5j43kfk83" path="res://assets/kenney_cursor_pixel_pack/cursors/tile_0006.png" id="3_j10kq"]
 [ext_resource type="Material" uid="uid://tihwlgxgq06p" path="res://materials/interactable_object_shader_material.tres" id="3_ncpd0"]
 [ext_resource type="Script" path="res://player/search_cursor.gd" id="4_bx0wj"]
 [ext_resource type="AudioStream" uid="uid://diyai0fok5n5c" path="res://assets/sounds/achievement.wav" id="6_g4k5d"]
-[ext_resource type="Texture2D" uid="uid://bdp17anwkt5hg" path="res://assets/kenney_cursor_pixel_pack/Tiles/tile_0180.png" id="7_3putm"]
+[ext_resource type="Texture2D" uid="uid://bdp17anwkt5hg" path="res://assets/kenney_cursor_pixel_pack/cursors/tile_0180.png" id="7_3putm"]
 [ext_resource type="PackedScene" uid="uid://dy35p4ooig37s" path="res://ui/map.tscn" id="8_uw4rf"]
-[ext_resource type="Theme" uid="uid://c043uyufavnx4" path="res://assets/ui_theme.tres" id="9_81ovj"]
-[ext_resource type="Script" path="res://ui/volume_slider.gd" id="10_2fuh6"]
-[ext_resource type="Script" path="res://ui/pause_menu.gd" id="10_46x7l"]
-[ext_resource type="Texture2D" uid="uid://bqg7exnxilosu" path="res://assets/custom/coins.png" id="12_c74km"]
-[ext_resource type="Script" path="res://ui/hud.gd" id="12_of1hx"]
-[ext_resource type="Script" path="res://ui/inventory.gd" id="14_4avu3"]
-[ext_resource type="Texture2D" uid="uid://cri1buqys8dop" path="res://assets/custom/inventory.png" id="15_uvh8w"]
-[ext_resource type="PackedScene" uid="uid://bvtnv0b52l80q" path="res://ui/item_slot.tscn" id="16_5e2ps"]
+[ext_resource type="PackedScene" uid="uid://bxqxtivd6ehuy" path="res://ui/pause_menu.tscn" id="9_tpxfn"]
+[ext_resource type="PackedScene" uid="uid://dwowi7x47dbkl" path="res://ui/inventory/inventory.tscn" id="12_alvu7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgsvi"]
 
@@ -31,8 +25,8 @@ scale_max = 0.8
 color = Color(1, 0.875112, 0.695295, 1)
 
 [node name="Player" type="CharacterBody2D"]
+process_mode = 3
 script = ExtResource("1_5c0ni")
-movement_speed = 80.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lgsvi")
@@ -66,315 +60,12 @@ texture = ExtResource("7_3putm")
 lifetime = 0.2
 one_shot = true
 
+[node name="PauseMenu" parent="." instance=ExtResource("9_tpxfn")]
+visible = false
+z_index = 11
+
+[node name="Inventory" parent="." instance=ExtResource("12_alvu7")]
+visible = false
+
 [node name="Map" parent="." instance=ExtResource("8_uw4rf")]
 visible = false
-
-[node name="PauseMenu" type="Control" parent="."]
-process_mode = 3
-visible = false
-top_level = true
-z_index = 10
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("9_81ovj")
-script = ExtResource("10_46x7l")
-
-[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.153472, 0.235432, 0.11697, 0.470588)
-
-[node name="PauseMenuContainer" type="CenterContainer" parent="PauseMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/PauseMenuContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/PauseMenuContainer/PanelContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("9_81ovj")
-text = "Paused"
-horizontal_alignment = 1
-
-[node name="ResumeButton" type="Button" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("9_81ovj")
-text = "Resume
-"
-
-[node name="SettingsButton" type="Button" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("9_81ovj")
-text = "Settings"
-
-[node name="TutorialButton" type="Button" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("9_81ovj")
-text = "Tutorial"
-
-[node name="QuitButton" type="Button" parent="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("9_81ovj")
-text = "Quit"
-
-[node name="TutorialContainer" type="CenterContainer" parent="PauseMenu"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -26.0
-offset_right = 36.0
-offset_bottom = 26.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/TutorialContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/TutorialContainer/PanelContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/TutorialContainer/PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PauseMenu/TutorialContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("9_81ovj")
-text = "Tutorial
-"
-horizontal_alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PauseMenu/TutorialContainer/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(400, 150)
-layout_mode = 2
-text = "Press Left Click to move around the scene and interact with objects and characters.
-
-Press E to enable search mode. In this mode your cursor becomes a magnifier that shakes the closer it is to an object and automatically discovers hidden objects.
-
-Press M to open the map. It allows you to travel between scenes.
-
-Press I to open the inventory. Here you can click on an item to interact with it (opens a dialog).
-"
-shortcut_keys_enabled = false
-
-[node name="BackButton" type="Button" parent="PauseMenu/TutorialContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("9_81ovj")
-text = "Back"
-
-[node name="SettingsContainer" type="CenterContainer" parent="PauseMenu"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/SettingsContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/SettingsContainer/PanelContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("9_81ovj")
-text = "Settings"
-
-[node name="SFXVolumeHBoxContainer" type="HBoxContainer" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/SFXVolumeHBoxContainer"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-text = "SFX"
-
-[node name="SFXHSlider" type="HSlider" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/SFXVolumeHBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.01
-script = ExtResource("10_2fuh6")
-bus_name = "SFX"
-
-[node name="MusicVolumeHBoxContainer2" type="HBoxContainer" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeHBoxContainer2"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-text = "Music"
-
-[node name="MusicHSlider" type="HSlider" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeHBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.01
-script = ExtResource("10_2fuh6")
-bus_name = "Music"
-
-[node name="ButtonsHBoxContainer" type="HBoxContainer" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="SaveButton" type="Button" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer"]
-layout_mode = 2
-theme = ExtResource("9_81ovj")
-text = "Save"
-
-[node name="CancelButton" type="Button" parent="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer"]
-layout_mode = 2
-theme = ExtResource("9_81ovj")
-text = "Cancel"
-
-[node name="Inventory" type="Control" parent="."]
-visible = false
-top_level = true
-z_index = 10
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("9_81ovj")
-script = ExtResource("14_4avu3")
-
-[node name="ColorRect" type="ColorRect" parent="Inventory"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.153472, 0.235432, 0.11697, 0.470588)
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Inventory"]
-custom_minimum_size = Vector2(80, 60)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("15_uvh8w")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="GridContainer" type="GridContainer" parent="Inventory/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -20.0
-offset_right = 31.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 3
-
-[node name="ItemSlot1" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
-layout_mode = 2
-
-[node name="ItemSlot2" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
-layout_mode = 2
-
-[node name="ItemSlot3" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
-layout_mode = 2
-
-[node name="ItemSlot4" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
-layout_mode = 2
-
-[node name="ItemSlot5" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
-layout_mode = 2
-
-[node name="ItemSlot6" parent="Inventory/NinePatchRect/GridContainer" instance=ExtResource("16_5e2ps")]
-layout_mode = 2
-
-[node name="UI" type="Control" parent="."]
-top_level = true
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -40.0
-offset_right = 56.0
-grow_vertical = 0
-theme = ExtResource("9_81ovj")
-script = ExtResource("12_of1hx")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -25.0
-offset_right = 4.0
-offset_bottom = -17.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="VSplitContainer" type="VSplitContainer" parent="UI/PanelContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/PanelContainer/HBoxContainer/VSplitContainer"]
-layout_mode = 2
-texture = ExtResource("12_c74km")
-
-[node name="MoneyLabel" type="Label" parent="UI/PanelContainer/HBoxContainer/VSplitContainer"]
-layout_mode = 2
-
-[connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="PauseMenu" method="_on_settings_button_pressed"]
-[connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton" to="PauseMenu" method="_on_tutorial_button_pressed"]
-[connection signal="pressed" from="PauseMenu/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]
-[connection signal="pressed" from="PauseMenu/TutorialContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="PauseMenu" method="_on_tutorial_back_button_pressed"]
-[connection signal="pressed" from="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/SaveButton" to="PauseMenu" method="_on_settings_save_button_pressed"]
-[connection signal="pressed" from="PauseMenu/SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/CancelButton" to="PauseMenu" method="_on_cancel_button_pressed"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://common/objects/interactable_object.gd" id="1_f85xy"]
 [ext_resource type="Shader" path="res://materials/outline_shader.gdshader" id="3_m544f"]
-[ext_resource type="Texture2D" uid="uid://bdp17anwkt5hg" path="res://assets/kenney_cursor_pixel_pack/Tiles/tile_0180.png" id="3_y2uam"]
+[ext_resource type="Texture2D" uid="uid://bdp17anwkt5hg" path="res://assets/kenney_cursor_pixel_pack/cursors/tile_0180.png" id="3_y2uam"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5whjs"]
 shader = ExtResource("3_m544f")

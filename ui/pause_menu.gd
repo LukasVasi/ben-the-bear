@@ -1,5 +1,6 @@
 class_name PauseMenu
-extends Control
+extends UIOverlay
+
 
 @onready var _pause_menu : CenterContainer = get_node("PauseMenuContainer")
 @onready var _settings_menu : CenterContainer = get_node("SettingsContainer")
@@ -10,22 +11,27 @@ extends Control
 var _original_sfx_volume : float = 1.0
 var _original_music_volume : float = 1.0
 
+
 func _ready() -> void:
-	visible = false
+	super()
 	_pause_menu.visible = true
 	_settings_menu.visible = false
 
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("escape"):
-		var paused : bool = not visible
-		get_tree().paused = paused
-		visible = paused
+func open() -> void:
+	get_tree().paused = true
+	_pause_menu.visible = true
+	_settings_menu.visible = false
+	super()
+
+
+func close() -> void:
+	super()
+	get_tree().paused = false
 
 
 func _on_resume_button_pressed() -> void:
-	get_tree().paused = false
-	visible = false
+	close()
 
 
 func _on_settings_button_pressed() -> void:
@@ -33,6 +39,7 @@ func _on_settings_button_pressed() -> void:
 	_settings_menu.visible = true
 	_original_sfx_volume = _sfx_slider.value
 	_original_music_volume = _music_slider.value
+
 
 func _on_quit_button_pressed() -> void:
 	var staging : Staging = get_tree().get_first_node_in_group("staging")

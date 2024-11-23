@@ -1,5 +1,5 @@
 class_name Map
-extends Control
+extends UIOverlay
 
 
 func travel_to(scene_path: String) -> void:

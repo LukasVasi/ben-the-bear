@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwowi7x47dbkl"]
+
+[ext_resource type="Theme" uid="uid://c043uyufavnx4" path="res://ui_theme/ui_theme.tres" id="1_bnxg4"]
+[ext_resource type="Script" path="res://ui/inventory/inventory.gd" id="2_njsqf"]
+[ext_resource type="Texture2D" uid="uid://d1v27eawchexy" path="res://assets/custom/item_slot_texture.png" id="3_fcocb"]
+[ext_resource type="PackedScene" uid="uid://bvtnv0b52l80q" path="res://ui/inventory/item_slot.tscn" id="4_dk2wd"]
+[ext_resource type="Script" path="res://ui/inventory/coin_slot.gd" id="4_knjsm"]
+[ext_resource type="Texture2D" uid="uid://ou723icr8qgp" path="res://assets/custom/coins_item.png" id="5_qnbc6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u8ly5"]
+texture = ExtResource("3_fcocb")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[node name="Inventory" type="Control"]
+top_level = true
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bnxg4")
+script = ExtResource("2_njsqf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.153472, 0.235432, 0.11697, 0.470588)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Inventory
+"
+
+[node name="CoinSlot" type="PanelContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_bnxg4")
+theme_override_styles/panel = SubResource("StyleBoxTexture_u8ly5")
+script = ExtResource("4_knjsm")
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/CoinSlot"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/CoinSlot/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="ItemDisplay" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/CoinSlot/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_qnbc6")
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/CoinSlot/CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "0"
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="ItemSlot0" parent="CenterContainer/PanelContainer/VBoxContainer/GridContainer" instance=ExtResource("4_dk2wd")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_u8ly5")
+
+[node name="ItemSlot1" parent="CenterContainer/PanelContainer/VBoxContainer/GridContainer" instance=ExtResource("4_dk2wd")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_u8ly5")
+
+[node name="ItemSlot2" parent="CenterContainer/PanelContainer/VBoxContainer/GridContainer" instance=ExtResource("4_dk2wd")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_u8ly5")
+
+[node name="ItemSlot3" parent="CenterContainer/PanelContainer/VBoxContainer/GridContainer" instance=ExtResource("4_dk2wd")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_u8ly5")
+
+[node name="ItemSlot4" parent="CenterContainer/PanelContainer/VBoxContainer/GridContainer" instance=ExtResource("4_dk2wd")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_u8ly5")
+
+[node name="ItemSlot5" parent="CenterContainer/PanelContainer/VBoxContainer/GridContainer" instance=ExtResource("4_dk2wd")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_u8ly5")
+
+[node name="ItemSlot6" parent="CenterContainer/PanelContainer/VBoxContainer/GridContainer" instance=ExtResource("4_dk2wd")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_u8ly5")
+
+[node name="ItemSlot7" parent="CenterContainer/PanelContainer/VBoxContainer/GridContainer" instance=ExtResource("4_dk2wd")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_u8ly5")
+
+[connection signal="gui_input" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/CoinSlot" to="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/CoinSlot" method="_on_gui_input"]
