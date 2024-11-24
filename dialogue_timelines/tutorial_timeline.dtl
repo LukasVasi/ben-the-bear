@@ -12,7 +12,7 @@ narrator: So what will it be?
 	[signal arg="checkpoint_tutorial_finished"]
 	[end_timeline]
 label the movement (Movement tutorial)
-narrator: You can move around by clicking the LEFT MOUSE button where you want to go. Go ahead, try it out!
+narrator: You can move around by clicking the LEFT MOUSE button where you want to go. Go ahead, try moving to the marked area.
 [end_timeline]
 label the searching (Searching tutorial)
 [signal arg="checkpoint_tutorial_searching"]
@@ -20,6 +20,7 @@ narrator: Many of the areas that you will visit, have a few hidden items laying 
 narrator: You can find these items by clicking the E button on your keyboard.
 narrator: This will enable the search mode. Here you can search the scene with your mouse cursor. The closer you are to a hidden item, the harder will the cursor shake and when you get close enough, the item will be revealed. It's like a game of hot and cold.
 narrator: Once an item is revealed, you can click the E button to exit the search mode and then interact with the object using the LEFT MOUSE button.
+narrator: You can click on a revealed item once again to pick it up. Picked up items are added to your inventory which you can access by pressing the I key. You can click on items in the inventory to interact with them.
 narrator: Try finding your map in your home.
 [end_timeline]
 label the map (Interaction tutorial)

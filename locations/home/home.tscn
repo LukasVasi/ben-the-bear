@@ -7,15 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://cnqje463vsta7" path="res://assets/custom/map_object.png" id="7_8b8yy"]
 [ext_resource type="Script" path="res://common/objects/object_state.gd" id="7_t0xiu"]
 [ext_resource type="PackedScene" uid="uid://c3dlf53wxll3i" path="res://characters/eddie_the_hedgehog.tscn" id="7_x8775"]
+[ext_resource type="Texture2D" uid="uid://dqrcbwb06mwkp" path="res://assets/kenney_cursor_pixel_pack/cursors/tile_0078.png" id="8_2tyoc"]
 [ext_resource type="Resource" uid="uid://bftlh6f2dx88l" path="res://items/map.tres" id="8_y4vjt"]
 [ext_resource type="PackedScene" uid="uid://cm8vdpyn1jj67" path="res://common/objects/coins.tscn" id="10_tif2t"]
 
 [sub_resource type="Resource" id="Resource_u62c4"]
 script = ExtResource("7_t0xiu")
 visibility_state = 1
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aa7ac"]
-size = Vector2(20, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wxhmv"]
 
@@ -48,11 +46,11 @@ item = ExtResource("8_y4vjt")
 
 [node name="MovementArea" type="Area2D" parent="."]
 visible = false
-position = Vector2(296, 228)
+position = Vector2(298, 217)
 monitorable = false
 
 [node name="Sprite2D" type="Sprite2D" parent="MovementArea"]
-texture = SubResource("PlaceholderTexture2D_aa7ac")
+texture = ExtResource("8_2tyoc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovementArea"]
 shape = SubResource("CircleShape2D_wxhmv")
